@@ -1,53 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="/css/style.css">
-	<title>Shop</title>
-</head>
-<body>
-	<header class="header">
-		<div class="container header-container">
-			<div class="row align-items-center">
-				<div class="col-2 logo">
-					<a href="/">
-						<img src="/images/logo.svg" width="60" height="60" alt="logo">
-					</a>
-				</div>
-				<div class="col-8 menu">
-					<nav class="row ">
-						<a href="#" class="menu-item">Home</a>
-						<a href="#" class="menu-item">Contact us</a>
-					</nav>
-				</div>
-				<div class="col-2 service-links">
-					<div class="row">
-						<div class="col service-links-container">
-							<div class="service-links-icon">
-								<i class="fa fa-user" aria-hidden="true"></i>
-							</div>
-						</div>
-						<div class="col service-links-container">
-							<div class="service-links-icon">
-								<i class="fa fa-shopping-cart" aria-hidden="true"></i>
-							</div>
-						</div>
-					</div>
-
-				</div>
-			</div>
-		</div>
-	</header>
+<?php
+    include_once "header.php"
+?>
 
 	<main class="main">
 		<div class="container">
 			<div class="row">
 				<div class="container product-container">
-					<div class="row align-items-start product-filters">
+					<section class="row align-items-start product-filters">
 						<div class="filter-name">Sort:</div>
 						<div class="filter-item">
 							<a href="">the cheapest</a>
@@ -55,10 +14,10 @@
 						<div class="filter-item">
 							<a href="">most recent</a>
 						</div>
-					</div> <!--  product-filters -->
+					</section> <!--  product-filters -->
 
-					<div class="row justify-content-between product-gallery">
-						<div class="col-3 product">
+					<section class="row justify-content-between product-gallery">
+						<div class="col-12 col-md-5 col-lg-3 product">
 							<div class="product-img">
 								<a href="" class="product-link">
 									<img src="images/dummy_img.jpeg" alt="">
@@ -80,7 +39,7 @@
 								</div>
 							</div>   <!-- product-item-description  -->
 						</div>  <!-- product -->
-						<div class="col-3 product">
+						<div class="col-12 col-md-5 col-lg-3 product">
 							<div class="product-img">
 								<a href="" class="product-link">
 									<img src="images/dummy_img.jpeg" alt="">
@@ -102,7 +61,7 @@
 								</div>
 							</div>   <!-- product-item-description  -->
 						</div>  <!-- product -->
-						<div class="col-3 product">
+						<div class="col-12 col-md-5 col-lg-3 product">
 							<div class="product-img">
 								<a href="" class="product-link">
 									<img src="images/dummy_img.jpeg" alt="">
@@ -124,8 +83,7 @@
 								</div>
 							</div>   <!-- product-item-description  -->
 						</div>  <!-- product -->
-						<div class="w-100"></div>
-						<div class="col-3 product">
+						<div class="col-12 col-md-5 col-lg-3 product">
 							<div class="product-img">
 								<a href="" class="product-link">
 									<img src="images/dummy_img.jpeg" alt="">
@@ -147,7 +105,7 @@
 								</div>
 							</div>   <!-- product-item-description  -->
 						</div>  <!-- product -->
-						<div class="col-3 product">
+						<div class="col-12 col-md-5 col-lg-3 product">
 							<div class="product-img">
 								<a href="" class="product-link">
 									<img src="images/dummy_img.jpeg" alt="">
@@ -169,7 +127,7 @@
 								</div>
 							</div>   <!-- product-item-description  -->
 						</div>  <!-- product -->
-						<div class="col-3 product">
+						<div class="col-12 col-md-5 col-lg-3 product">
 							<div class="product-img">
 								<a href="" class="product-link">
 									<img src="images/dummy_img.jpeg" alt="">
@@ -191,53 +149,29 @@
 								</div>
 							</div>   <!-- product-item-description  -->
 						</div>  <!-- product -->
-					</div> <!--  product-gallery -->
+					</section> <!--  product-gallery -->
 
-
-					<div class="column pagination-container">
-						<ul class="row justify-content-center pagination">
-							<li>
-								<a href="#" class="back-arrow border-gray">
-									<i class="fa fa-angle-left" aria-hidden="true"></i>Back
-								</a>
-							</li>
-							<li>
-								<a href="#" class="border-gray">1</a>
-							</li>
-							<li>
-								<a href="#" class="border-gray active">2</a>
-							</li>
-							<li>
-								<a href="#" class="border-gray">3</a>
-							</li>
-							<li>
-								<a href="#" class="border-gray">4</a>
-							</li>
-							<li>
-								<a href="#" class="next-arrow border-gray">Forward
-									<i class="fa fa-angle-right" aria-hidden="true"></i>
-								</a>
-							</li>
-						</ul>  <!-- pagination -->
-					</div> <!--  pagination-container -->
+					<section class="column pagination-container">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination justify-content-center">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" tabindex="-1">Previous</a>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">Next</a>
+                                </li>
+                            </ul>
+                        </nav>
+					</section> <!--  pagination-container -->
 
 				</div>
 			</div>
 		</div>
 	</main>
 
-	<footer class="footer">
-		<div class="container footer-container">
-			<div class="row">
-				<div class="container copyright">
-					<p>Copyright 2017 ©</p>
-				</div>
-			</div>
-		</div>
-
-	</footer>
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-</body>
-</html>
+<?php
+    include_once "footer.php";
+?>

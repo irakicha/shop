@@ -119,6 +119,11 @@ a:hover{
 	border: 1px solid #ecece6;
 	border-radius: 3px;
 	margin-bottom: 40px;
+	margin-right: 25px;
+}
+
+.product:nth-child(3n){
+	margin-right:0;
 }
 
 .product:la
@@ -146,8 +151,6 @@ a:hover{
 }
 
 .pagination li {
-	display: inline-block;
-	vertical-align: top;
 	line-height: 2.3;
 	margin-right: 10px;
 }
@@ -164,30 +167,9 @@ a:hover{
 	margin-left: 15px;
 }
 
-.pagination li:first-child i {
-	margin-right: 15px;
-}
-
-.pagination li:last-child i {
-	margin-left: 10px;
-}
 
 .pagination a {
-	display: block;
-	width: 35px;
-	height: 35px;
-	text-align: center;
-	border-radius: 0;
-	border: 1px solid #ecece6;
 	color: #000;
-}
-
-.pagination li:first-child a,
-.pagination li:last-child a {
-	width: 117px;
-	height: 35px;
-	text-align: center;
-	border-radius: 3px;
 }
 
 .pagination a:hover{
@@ -222,3 +204,116 @@ a:hover{
 	font-size: .8rem;
 }
 
+
+/*PAGES*/
+.page-title{
+	margin-bottom: 20px;
+	color: #16202d;
+}
+
+.basket-table{
+	margin-bottom:40px;
+}
+
+.basket-table th:nth-child(1),
+.basket-table tr td:nth-child(1){
+	width: 60px;
+}
+
+.basket-table th:nth-child(2),
+.basket-table tr td:nth-child(2){
+	width: 140px;
+}
+
+.basket-table th:nth-child(4),
+.basket-table tr td:nth-child(4){
+	width: 200px;
+}
+
+.basket-table th:nth-child(5),
+.basket-table tr td:nth-child(5){
+	width: 140px;
+	text-align: right;
+}
+
+.basket-table th:nth-child(6),
+.basket-table tr td:nth-child(6){
+	width: 140px;
+	text-align: right;
+}
+
+.product__button-increase,
+.product__button-decrease {
+	display: inline-block;
+	width: 29px;
+	height: 29px;
+	border: 1px solid #CCC;
+	position: relative;
+	overflow: hidden;
+	text-align: center;
+	font-size: 1.6rem;
+	line-height: 1;
+	vertical-align: top;
+	cursor: pointer;
+}
+
+.product__count-input {
+	font-size: 12px;
+	width: 31px;
+	height: 29px;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	vertical-align: top;
+	display: inline-block;
+}
+
+.product__button-remove {
+	display: inline-block;
+	vertical-align: top;
+	font-size: 1.6rem;
+	line-height: 1.1;
+	cursor: pointer;
+	padding-left: 7px;
+	padding-right: 7px;
+}
+
+.btn-row{
+	width: 100%;
+	text-align: right;
+	margin-bottom: 45px;
+}
+
+.btn-container{
+	padding-right: 0;
+}
+
+.continue-shopping{
+	margin-right: 15px;
+}
+
+.buy{
+	background: #e73089;
+}
+
+.buy:hover{
+	color: #e73089;
+	background: #ffffff;
+	border-color: #e73089;
+}
+
+
+
+
+
+/*MEDIA*/
+
+@media screen and (max-width: 720px) {
+	.product:nth-child(3n){
+		margin-right:0;
+	}
+
+	.product:nth-child(3n){
+		margin-right:25px;
+	}
+}
