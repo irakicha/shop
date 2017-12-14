@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0117b376-2d17-401f-881b-8f502f995ecd" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/style.css" afterPath="$PROJECT_DIR$/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/header.php" afterPath="$PROJECT_DIR$/header.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/home.php" afterPath="$PROJECT_DIR$/home.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -39,11 +37,11 @@
       <list>
         <option value="$PROJECT_DIR$/head.php" />
         <option value="$PROJECT_DIR$/footer.php" />
-        <option value="$PROJECT_DIR$/home.php" />
         <option value="$PROJECT_DIR$/basket.php" />
         <option value="$PROJECT_DIR$/header.php" />
         <option value="$PROJECT_DIR$/product.php" />
         <option value="$PROJECT_DIR$/css/style.css" />
+        <option value="$PROJECT_DIR$/home.php" />
       </list>
     </option>
   </component>
@@ -119,12 +117,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1513278087976</updated>
-      <workItem from="1513278095899" duration="11489000" />
+      <workItem from="1513278095899" duration="12109000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11489000" />
+    <option name="totallyTimeSpent" value="12109000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1568" height="896" extended-state="0" />
@@ -177,14 +175,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/home.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/header.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -211,10 +201,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="98" column="22" lean-forward="true" selection-start-line="98" selection-start-column="22" selection-end-line="98" selection-end-column="22" />
+        <state relative-caret-position="-1660">
+          <caret line="90" column="17" lean-forward="true" selection-start-line="90" selection-start-column="17" selection-end-line="90" selection-end-column="17" />
           <folding>
             <element signature="e#3833#3855#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/home.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="150" column="48" lean-forward="false" selection-start-line="150" selection-start-column="48" selection-end-line="150" selection-end-column="48" />
+          <folding>
+            <element signature="e#159#432#0#HTML" expanded="false" />
+            <element signature="e#533#1544#0#HTML" expanded="false" />
+            <element signature="e#1587#3051#0#HTML" expanded="false" />
+            <element signature="e#3094#4558#0#HTML" expanded="false" />
+            <element signature="e#4601#6065#0#HTML" expanded="false" />
+            <element signature="e#6108#7572#0#HTML" expanded="false" />
+            <element signature="e#7615#9079#0#HTML" expanded="false" />
           </folding>
         </state>
       </provider>
