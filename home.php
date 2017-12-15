@@ -1,5 +1,7 @@
 <?php
-    include_once "header.php"
+    require_once "products/products.php";
+    include_once "header.php";
+//    echo var_dump($products);
 ?>
 
 	<main class="main">
@@ -20,7 +22,7 @@
 						<div class="col-12 col-md-5 col-lg-3 product">
 							<div class="product-img">
 								<a href="" class="product-link">
-									<img src="images/dummy_img.jpeg" alt="">
+									<img src="" alt="">
 								</a>
 							</div>
 
