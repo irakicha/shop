@@ -119,6 +119,8 @@ a:hover{
 .product{
 	min-height: 430px;
 	padding-top: 15px;
+	padding-bottom:15px;
+	min-height: 470px;
 	height: 100%;
 	font-size: 0.8rem;
 	border: 1px solid #ecece6;
@@ -137,6 +139,7 @@ a:hover{
 
 .product-img img{
 	width: 100%;
+	max-height:170px;
 }
 
 .add-to-cart:focus{
