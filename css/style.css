@@ -16,13 +16,15 @@ a{
 	color: #000000;
 }
 
-button{
+button,
+a.btn{
 	cursor: pointer;
 	color: #ffffff;
 	background:#00a13a;
 }
 
-button:hover{
+button:hover,
+a.btn:hover{
 	cursor: pointer;
 	color: #00a13a;
 	border-radius: .25rem;
@@ -30,7 +32,8 @@ button:hover{
 	border: 1px solid #00a13a;
 }
 
-button:focus{
+button:focus,
+a.btn:focus{
 	box-shadow:none;
 }
 

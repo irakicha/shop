@@ -1,5 +1,5 @@
 <?php
-include_once "header.php";
+include_once "layouts/header.php";
 ?>
 
 <main class="main product-page">
@@ -32,5 +32,5 @@ include_once "header.php";
 </main>
 
 <?php
-include_once "footer.php";
+include_once "layouts/footer.php";
 ?>

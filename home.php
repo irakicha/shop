@@ -1,6 +1,6 @@
 <?php
     require_once "products/products.php";
-    include_once "header.php";
+    include_once "layouts/header.php";
 //    echo var_dump($products);
 ?>
 
@@ -38,7 +38,7 @@
                                     <?php echo $product['price'];?><span class="product-price_currency">USD</span>
 								</div>
 								<div class="col-6 btn-container">
-									<button class="btn add-to-cart">Add To Cart</button>
+                                        <a href="/classes/AddToBasket.php?id=<?=$product['id']?>" class="btn add-to-cart">Add To Cart</a>
 								</div>
 							</div>   <!-- product-item-description  -->
 						</div>  <!-- product -->
@@ -69,5 +69,5 @@
 	</main>
 
 <?php
-    include_once "footer.php";
+    include_once "layouts/footer.php";
 ?>
