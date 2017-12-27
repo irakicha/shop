@@ -38,10 +38,10 @@ class Router
         if (!$parts){
             header("HTTP/1.1 404 Not Found");
         } else {
-            $controller =ucfirst(array_shift($parts));
+            $controller =ucfirst(array_shift($parts)).'Controller';
             $controller_path = 'app\controllers\\'.$controller;
             if (class_exists($controller_path)){
-                $action = array_shift($parts);
+                $action = array_shift($parts).'Action';
                 if (method_exists($controller_path, $action)){
                     $params = array_shift($parts);
                     $controller = new $controller_path;

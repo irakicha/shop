@@ -11,9 +11,9 @@ namespace app\controllers;
 use app\core\Controller;
 use app\models\Storage;
 
-class Main extends Controller
+class MainController extends Controller
 {
-    public function index(){
+    public function indexAction(){
 
             $products=new Storage();
             $products = $products->getProductList();

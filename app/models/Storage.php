@@ -26,7 +26,7 @@ class Storage
         if (!$id){
             //throw new Exception;
         } else {
-            return $this->storage[$id];
+            return $this->storage[$id-1];
         }
     }
 }
