@@ -1,3 +1,11 @@
+AddDefaultCharset UTF-8
+
+Options +FollowSymlinks
+Options -Indexes
+
 RewriteEngine on
-	Options -Indexes
-	DirectoryIndex home.php
+RewriteBase /
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-l
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ index.php [NC,L]

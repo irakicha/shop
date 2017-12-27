@@ -1,7 +1,7 @@
 <?php
 
 	// list of products id=> product array
-		$products = array(
+		return array(
             array(
                 'id' => '1',
                 'name' => 'Peugeot 108',
@@ -84,8 +84,6 @@
             )
         );
 
-return $products;
-?>
 
 
 
