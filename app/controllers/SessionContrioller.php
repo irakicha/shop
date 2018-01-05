@@ -8,8 +8,7 @@
 
 namespace app\controllers;
 
-
-class SessionContrioller
+class SessionController
 {
     private function getName()
     {

@@ -17,12 +17,14 @@ class Storage
         $this->storage = require_once APP_PATH."/data/products.php";
     }
 
-    public function getProductList(){
+    public function getProductList()
+    {
         return $this->storage;
     }
 
-    public function getProductItem($id){
-        if (!$id){
+    public function getProductItem($id)
+    {
+        if (!$id) {
             //throw new Exception;
             echo "no product with this id";
         } else {

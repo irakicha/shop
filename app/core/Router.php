@@ -20,11 +20,13 @@ class Router
 
     private $route=[];
 
-    public function getRoutes(){
+    public function getRoutes()
+    {
         return $this->routes;
     }
 
-    public function getRoute(){
+    public function getRoute()
+    {
         return $this->route;
     }
 
@@ -33,11 +35,12 @@ class Router
      * prepare URI
      * @return array
      * */
-    function __construct()
+    public function __construct()
     {
         $this->uri = trim($_SERVER['REQUEST_URI'], '/');
         $this->routes = require APP_PATH."config/routes.php";
     }
+    
     /*
      * Match URI with routes, return route
      *@return array
@@ -45,15 +48,13 @@ class Router
     public function match()
     {
 
-        foreach ($this->routes as $pattern => $value)
-        {
-            if (preg_match('#^'.$pattern.'$#',$this->uri))
-            {
+        foreach ($this->routes as $pattern => $value) {
+            if (preg_match('#^'.$pattern.'$#', $this->uri)) {
                 $internalPath = preg_replace('#^'.$pattern.'$#', $value, $this->uri);
                 $route = explode('/', $internalPath);
-                $route = array_pad($route,3,'');
+                $route = array_pad($route, 3, '');
                 $keys = ['controller','action','params'];
-                $route = array_combine($keys,$route);
+                $route = array_combine($keys, $route);
                 return $route;
 
             }
@@ -72,44 +73,36 @@ class Router
         $route =$this->match();
 
 
-        if (!$route)
-        {
+        if (!$route) {
             echo "page not found";
             header("HTTP/1.1 404 Not Found");
-        } else
-        {
+        } else {
             $controller =ucfirst($route['controller']).'Controller';
 
             $controller_path = 'app\controllers\\'.$controller;
-            if (class_exists($controller_path))
-            {
+            if (class_exists($controller_path)) {
                 $controller = new $controller_path($route);
 
                 $action = $route['action'];
 
-                if (method_exists($controller_path, $action))
-                {
+                if (method_exists($controller_path, $action)) {
                     $params = $route['params'];
 
-                    if ($params)
-                    {
+                    if ($params) {
                         $controller ->$action($params);
-                    } else
-                    {
+                    } else {
                         $controller ->$action();
                     }
 
 
-                } else
-                {
+                } else {
                     //throw new Exception("No method");
                     echo "Method not found";
                 }
 
                 $controller->getView();
 
-            } else
-            {
+            } else {
                 //throw new Exception("No Controller");
                 echo "controller not found";
             }
