@@ -325,15 +325,26 @@ a:hover{
 	margin-bottom: 45px;
 }
 
-.product-page .product-img{
+.product-row .product-img{
 	border: 1px solid #ecece6;
 	border-radius: 3px;
 	padding: 25px;
 	margin-left: 15px;
 }
 
-.product-page .product-description{
+.product-row .product-img img{
+	height: 100%;
+	max-height: 300px;
+}
+
+
+.product-row .product-description{
 	margin-bottom: 50px;
+	padding-right: 30px;
+}
+
+.product-row .btn-container{
+	text-align: right;
 }
 
 /*MEDIA*/

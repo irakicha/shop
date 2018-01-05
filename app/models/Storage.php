@@ -15,7 +15,6 @@ class Storage
     public function __construct()
     {
         $this->storage = require_once ROOTPATH."/app/data/products.php";
-
     }
 
     public function getProductList(){

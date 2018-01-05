@@ -8,7 +8,18 @@
 
 return [
 
-    'product/view/([0-9]+)' => 'product/view/$1',
+    /*ProductBaseController*/
+
+    /*show 1 product*/
+
+    'product/([0-9]+)' =>'product/view/$1',
+
+    /*show all products*/
+
+    'product/' => 'product/viewAll',
+
+
+    /*MainBaseController*/
 
     '' => 'main/index'
 ];

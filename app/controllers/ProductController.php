@@ -15,18 +15,16 @@ class ProductController  extends Controller
 {
     protected static $products;
 
-    function __construct()
-    {
-
-    }
+//    function __construct()
+//    {
+//
+//    }
 
     public function viewAction($id){
         if($id){
             $products=new Storage();
             $product = $products->getProductItem($id);
-            echo "<pre>";
-            print_r($product);
-            return $product;
+            $this->setData($product);
         } else {
             echo "No products with this id";
         }

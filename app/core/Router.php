@@ -10,56 +10,108 @@ namespace app\core;
 
 class Router
 {
-    private $routes;
+    /*
+     * Table of routes
+     * @var array
+     * */
+    private $uri;
 
-    function __construct()
-    {
-        $this->routes = require "app/config/routes.php";
+    private $routes =[];
 
+    private $route=[];
+
+    public function getRoutes(){
+        return $this->routes;
     }
 
-    public function match(){
+    public function getRoute(){
+        return $this->route;
+    }
 
-        $uri = trim($_SERVER['REQUEST_URI'], '/');
+    /*
+     * Load table of routes
+     * prepare URI
+     * @return array
+     * */
+    function __construct()
+    {
+        $this->uri = trim($_SERVER['REQUEST_URI'], '/');
+        $this->routes = require APP_PATH."config/routes.php";
+    }
+    /*
+     * Match URI with routes, return route
+     *@return array
+     * */
+    public function match()
+    {
 
-        foreach ($this->routes as $pattern => $value){
-            if (preg_match('#^'.$pattern.'$#',$uri)){
-                $internalPath = preg_replace('#^'.$pattern.'$#', $value, $uri);
-                $request_parts = explode('/', $internalPath);
-                return $request_parts;
+        foreach ($this->routes as $pattern => $value)
+        {
+            if (preg_match('#^'.$pattern.'$#',$this->uri))
+            {
+                $internalPath = preg_replace('#^'.$pattern.'$#', $value, $this->uri);
+                $route = explode('/', $internalPath);
+                $route = array_pad($route,3,'');
+                $keys = ['controller','action','params'];
+                $route = array_combine($keys,$route);
+                return $route;
+
             }
+
         }
         return false;
     }
 
-    public function run(){
-        $parts =$this->match();
+    /*
+     * find and set up controller, action and action params
+     * @route arr
+     * */
 
-        if (!$parts){
+    public function run()
+    {
+        $route =$this->match();
+
+
+        if (!$route)
+        {
+            echo "page not found";
             header("HTTP/1.1 404 Not Found");
-        } else {
-            $controller =ucfirst(array_shift($parts)).'Controller';
+        } else
+        {
+            $controller =ucfirst($route['controller']).'Controller';
+
             $controller_path = 'app\controllers\\'.$controller;
-            if (class_exists($controller_path)){
-                $action = array_shift($parts).'Action';
-                if (method_exists($controller_path, $action)){
-                    $params = array_shift($parts);
-                    $controller = new $controller_path;
-                    if ($params){
+            if (class_exists($controller_path))
+            {
+                $controller = new $controller_path($route);
+
+                $action = $route['action'].'Action';
+
+                if (method_exists($controller_path, $action))
+                {
+                    $params = $route['params'];
+
+                    if ($params)
+                    {
                         $controller ->$action($params);
-                    } else {
+                    } else
+                    {
                         $controller ->$action();
                     }
 
-//
-                } else {
+
+                } else
+                {
                     //throw new Exception("No method");
-                     echo "Method not found";
+                    echo "Method not found";
                 }
 
-            } else {
+                $controller->getView();
+
+            } else
+            {
                 //throw new Exception("No Controller");
-               echo "controller not found";
+                echo "controller not found";
             }
         }
 

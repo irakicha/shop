@@ -14,8 +14,8 @@
             <div class="col-8 menu">
                 <nav class="row ">
                     <a href="/" class="menu-item">Home</a>
-                    <a href="/basket.php" class="menu-item">Basket</a>
-                    <a href="/product.php" class="menu-item">Product</a>
+                    <a href="../../../public/index.php" class="menu-item">Basket</a>
+                    <a href="../../../public/index.php" class="menu-item">Product</a>
                     <a href="#" class="menu-item">Contact us</a>
                 </nav>
             </div>
