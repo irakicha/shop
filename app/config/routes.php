@@ -8,7 +8,7 @@
 
 return [
 
-    /*ProductBaseController*/
+    /*ProductController*/
 
     /*show 1 product*/
 
@@ -17,6 +17,13 @@ return [
     /*show all products*/
 
     'product/' => 'product/viewAll',
+
+
+    /*AuthController*/
+
+    /*show user*/
+
+    'auth/([a-z]+)' =>'auth/login/$1',
 
 
     /*MainBaseController*/

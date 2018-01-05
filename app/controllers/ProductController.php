@@ -15,12 +15,8 @@ class ProductController  extends Controller
 {
     protected static $products;
 
-//    function __construct()
-//    {
-//
-//    }
 
-    public function viewAction($id){
+    public function view($id){
         if($id){
             $products=new Storage();
             $product = $products->getProductItem($id);

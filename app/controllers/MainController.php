@@ -10,7 +10,7 @@ use app\models\Storage;
 
 class MainController extends Controller
 {
-    public function indexAction(){
+    public function index(){
 
             $storage=new Storage();
             $products = $storage->getProductList();

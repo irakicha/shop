@@ -85,7 +85,7 @@ class Router
             {
                 $controller = new $controller_path($route);
 
-                $action = $route['action'].'Action';
+                $action = $route['action'];
 
                 if (method_exists($controller_path, $action))
                 {

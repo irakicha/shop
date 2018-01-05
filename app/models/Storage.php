@@ -14,7 +14,7 @@ class Storage
 
     public function __construct()
     {
-        $this->storage = require_once ROOTPATH."/app/data/products.php";
+        $this->storage = require_once APP_PATH."/data/products.php";
     }
 
     public function getProductList(){
@@ -24,6 +24,7 @@ class Storage
     public function getProductItem($id){
         if (!$id){
             //throw new Exception;
+            echo "no product with this id";
         } else {
             return $this->storage[$id-1];
         }
