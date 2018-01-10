@@ -6,9 +6,11 @@
  * Time: 13:27
  */
 
-namespace app\models;
+namespace App\Models;
 
-class Storage
+use Core\Model;
+
+class Storage extends Model
 {
     private $storage;
 

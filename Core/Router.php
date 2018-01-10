@@ -6,7 +6,7 @@
  * Time: 13:37
  */
 
-namespace app\core;
+namespace Core;
 
 class Router
 {
@@ -38,7 +38,7 @@ class Router
     public function __construct()
     {
         $this->uri = trim($_SERVER['REQUEST_URI'], '/');
-        $this->routes = require APP_PATH."config/routes.php";
+        $this->routes = require APP_PATH . "config/routes.php";
     }
     
     /*
@@ -72,14 +72,14 @@ class Router
     {
         $route =$this->match();
 
-
         if (!$route) {
             echo "page not found";
             header("HTTP/1.1 404 Not Found");
         } else {
             $controller =ucfirst($route['controller']).'Controller';
 
-            $controller_path = 'app\controllers\\'.$controller;
+            $controller_path = 'App\Controllers\\'.$controller;
+
             if (class_exists($controller_path)) {
                 $controller = new $controller_path($route);
 
@@ -107,6 +107,5 @@ class Router
                 echo "controller not found";
             }
         }
-
     }
 }

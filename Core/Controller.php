@@ -3,7 +3,7 @@
  *
  */
 
-namespace app\core;
+namespace Core;
 
 abstract class Controller
 {

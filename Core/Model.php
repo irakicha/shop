@@ -2,7 +2,7 @@
 /**
  *  * */
 
-namespace app\core;
+namespace Core;
 
 abstract class Model
 {

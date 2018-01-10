@@ -23,7 +23,7 @@ include_once "head.php";
                 <div class="row">
                     <div class="col service-links-container">
                         <div class="service-links-icon">
-                            <i class="fa fa-user" aria-hidden="true"></i>
+                            <i class="fa fa-user" aria-hidden="true" onclick="location.href='../auth/login'"></i>
                         </div>
                     </div>
                     <div class="col service-links-container">

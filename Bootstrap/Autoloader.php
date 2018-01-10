@@ -7,7 +7,7 @@
  * Time: 13:05
  */
 
-namespace bootstrap;
+namespace Bootstrap;
 
 class Autoloader
 {
@@ -59,10 +59,6 @@ class Autoloader
         } else {
             array_push($this->prefixes[$prefix], $base_dir);
         }
-
-        print_r($prefix);
-
-
     }
 
     /**
@@ -77,14 +73,9 @@ class Autoloader
         // the current namespace prefix
         $prefix = $class;
 
-
-
-//        echo $class;
-
         // work backwards through the namespace names of the fully-qualified
         // class name to find a mapped file name
         while (false !== $pos = strrpos($prefix, '\\')) {
-
             // retain the trailing namespace separator in the prefix
             $prefix = substr($class, 0, $pos + 1);
 
@@ -100,11 +91,7 @@ class Autoloader
             // remove the trailing namespace separator for the next iteration
             // of strrpos()
             $prefix = rtrim($prefix, '\\');
-
-
         }
-
-        echo $prefix;
 
         // never found a mapped file
         return false;
@@ -127,7 +114,6 @@ class Autoloader
 
         // look through base directories for this namespace prefix
         foreach ($this->prefixes[$prefix] as $base_dir) {
-
             // replace the namespace prefix with the base directory,
             // replace namespace separators with directory separators
             // in the relative class name, append with .php
@@ -155,13 +141,12 @@ class Autoloader
     protected function requireFile($file)
     {
         if (file_exists($file)) {
-            echo $file;
+            require $file;
             return true;
         }
         return false;
     }
 }
-
 
 
 

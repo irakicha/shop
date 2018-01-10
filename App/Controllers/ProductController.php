@@ -6,10 +6,10 @@
  * Time: 2:19
  */
 
-namespace app\controllers;
+namespace App\Controllers;
 
-use app\core\Controller;
-use app\models\Storage;
+use Core\Controller;
+use App\Models\Storage;
 
 class ProductController extends Controller
 {
@@ -19,13 +19,11 @@ class ProductController extends Controller
     public function view($id)
     {
         if ($id) {
-            $products=new Storage();
+            $products = new Storage();
             $product = $products->getProductItem($id);
             $this->setData($product);
         } else {
             echo "No products with this id";
         }
     }
-
-
 }

@@ -1,4 +1,3 @@
-
 <h1 class="page-title"><?php echo $name ;?></h1>
 
 <div class="row justify-content-between product-row ">

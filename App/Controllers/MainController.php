@@ -3,10 +3,10 @@
  *
  */
 
-namespace app\controllers;
+namespace App\Controllers;
 
-use app\core\Controller;
-use app\models\Storage;
+use Core\Controller;
+use App\Models\Storage;
 
 class MainController extends Controller
 {

@@ -14,7 +14,7 @@ return [
         'id' => '2',
         'name' => 'Peugeot 208',
         'category' => 'Peugeot',
-        'description' => 'The Peugeot 208 is a supermini (B-segment in Europe) produced by the French automaker Peugeot, and unveiled at the Geneva Motor Show in March 2012. The first 208 models were three door hatchbacks produced in 2011, at the companys new plant in Slovakia.',
+        'description' => 'The Peugeot 208 is a supermini (B-segment in Europe) produced by the French automaker Peugeot, and unveiled at the Geneva Motor Show in March 2012. The first 208 Models were three door hatchbacks produced in 2011, at the companys new plant in Slovakia.',
         'image' => 'http://bm.img.com.ua/berlin/storage/orig/0/ff/5d68e018ca6fd419314c190bf3d99ff0.jpg',
         'price' => '20000.00'
     ],
@@ -22,7 +22,7 @@ return [
         'id' => '3',
         'name' => 'Peugeot 308',
         'category' => 'Peugeot',
-        'description' => 'The Peugeot 308 is a small family car produced by the French car manufacturer Peugeot. It was unveiled on 5 June 2007, and launched in September 2007. Its development code was "Project T7", and is the first car of the X08 generation of Peugeot models.',
+        'description' => 'The Peugeot 308 is a small family car produced by the French car manufacturer Peugeot. It was unveiled on 5 June 2007, and launched in September 2007. Its development code was "Project T7", and is the first car of the X08 generation of Peugeot Models.',
         'image' => 'http://cdn1.3dtuning.com/info/Peugeot%20308%202012%205%20Door%20Hatchback/factory/6.jpg',
         'price' => '25000.00'
     ],
@@ -31,7 +31,7 @@ return [
         'name' => 'Peugeot 508',
         'category' => 'Peugeot',
         'description' => 'The Peugeot 508 is a large family car launched in 2011 by French automaker Peugeot, and followed by the 508 SW, an estate version, in March 2011. It replaces the Peugeot 407, as well as the larger Peugeot 607, for which no direct replacement is scheduled.',
-        'image' => 'http://www.newstalk.com/content/001/images/000058/81704_54_pages_01_43344_656x500.jpg',
+        'image' => 'https://fncdn.blob.core.windows.net/web/1/root/22333.jpg',
         'price' => '35000.00'
     ],
     [
@@ -54,7 +54,7 @@ return [
         'id' => '7',
         'name' => 'Suzuki Vitara',
         'category' => 'Suzuki',
-        'description' => 'The Suzuki Vitara is a compact SUV produced by Suzuki in four generations since 1988. The second and third generation models were known as the Suzuki Grand Vitara, with the fourth and current series eschewing this prefix. In Japan and a number of other markets, all generations have used the name Suzuki Escudo.',
+        'description' => 'The Suzuki Vitara is a compact SUV produced by Suzuki in four generations since 1988. The second and third generation Models were known as the Suzuki Grand Vitara, with the fourth and current series eschewing this prefix. In Japan and a number of other markets, all generations have used the name Suzuki Escudo.',
         'image' => 'http://cdn.motorpage.ru/Photos/300/528C.jpg',
         'price' => '55000.00'
     ],

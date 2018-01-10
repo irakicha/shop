@@ -21,9 +21,9 @@ return [
 
     /*AuthController*/
 
-    /*show user*/
+    'auth/login' =>'auth/login',
 
-    'auth/([a-z]+)' =>'auth/login/$1',
+    'auth/register' =>'auth/register',
 
 
     /*MainBaseController*/
