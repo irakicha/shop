@@ -29,13 +29,11 @@
                 <form action="" method="POST">
 
                     <div class="add-column-item">
-                        <input type="text" name="login" placeholder="Login" class="input"
-                               value="<?php echo $_POST['login'] ?>">
+                        <input type="text" name="login" placeholder="Login" class="input">
                     </div> <!--  add-column-item -->
 
                     <div class="add-column-item">
-                        <input type="password" name="password" placeholder="password" class="input"
-                               value="<?php echo $_POST['password'] ?>">
+                        <input type="password" name="password" placeholder="password" class="input">
                     </div>
 
                     <div class="add-column-item btn-container">
