@@ -16,7 +16,7 @@ class Users extends Model
 
     public static function getAllUsers()
     {
-        self::$users = require_once APP_PATH."config/users.php";
+        self::$users = require_once ROOTPATH.'/App/config/users.php';
         return self::$users;
     }
 

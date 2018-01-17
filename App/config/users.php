@@ -12,5 +12,4 @@ return[
         'login'=>'user',
         'password' => '111111'
     ]
-
 ];
