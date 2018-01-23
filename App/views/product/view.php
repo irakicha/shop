@@ -1,4 +1,4 @@
-<h1 class="page-title"><?php echo $name ;?></h1>
+<h1 class="page-title"><?php echo $title ;?></h1>
 
 <div class="row justify-content-between product-row ">
     <div class="col-5 product-img">

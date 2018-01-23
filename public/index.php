@@ -11,7 +11,7 @@ define("APP_PATH", ROOTPATH."/App/");
 define("CONTROLLER_PATH", ROOTPATH."/App/Controllers/");
 define("VIEW_PATH", ROOTPATH."/App/views/");
 
-require_once '../vendor/autoload.php';
+require_once ROOTPATH.'/vendor/autoload.php';
 
 $router = new Core\Router();
 $router->run();

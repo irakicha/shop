@@ -12,9 +12,12 @@ class MainController extends Controller
 {
     public function index()
     {
-            $storage=new Storage();
-            $products = $storage->getProductList();
-            $this->setData($products);
+        $model = new Storage();
+
+        $products = $model->findAll();
+
+        $this->setData($products);
+
     }
 
 }

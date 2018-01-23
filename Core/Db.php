@@ -14,10 +14,10 @@ class Db
     private $pdo;
     private static $instance;
 
-    protected function __construct()
+    private function __construct()
     {
         $connection = require_once APP_PATH."config/config.php";
-        $this->pdo = new \PDO($connection['dsn'], $connection['user'], $connection['password']);
+        $this->pdo = new \PDO($connection['dsn'], $connection['user'], $connection['password'], $connection['options']);
     }
 
     public static function instance()
@@ -37,13 +37,27 @@ class Db
         return $query->execute();
     }
 
-    public function query($sql){
+    /*
+     * @return array
+     * */
+    public function fetchAll($sql){
+
         $query = $this->pdo->prepare($sql);
-        $result = $query->execute();
-        if ($result) {
-            return $result->fetchAll();
-        } else {
-            return false;
-        }
+        $query->execute();
+        return $query->fetchAll();
     }
+
+
+    /*
+     * @return array
+     * */
+    public function fetchOne($sql, $params=[]){
+
+        $query = $this->pdo->prepare($sql);
+        $query->execute($params);
+        return $query->fetch();
+
+    }
+
+
 }

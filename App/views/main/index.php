@@ -16,13 +16,13 @@
             <div class="col-12 col-md-5 col-lg-3 product">
                 <div class="product-img">
                     <a href="product/<?php echo $product['id']; ?>" class="product-link">
-                        <img src="<?php echo $product['image'] ?>" alt="<?php echo $product['name']; ?>">
+                        <img src="<?php echo $product['image'] ?>" alt="<?php echo $product['title']; ?>">
                     </a>
                 </div>
 
                 <h3 class="product-title">
                     <a href="product/<?php echo $product['id']; ?>"
-                       class="product-item_link"><?php echo $product['name']; ?></a>
+                       class="product-item_link"><?php echo $product['title']; ?></a>
                 </h3>
                 <div class="product-description">
                     <p><?php echo $product['description']; ?></p>

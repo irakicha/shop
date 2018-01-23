@@ -13,17 +13,16 @@ use App\Models\Storage;
 
 class ProductController extends Controller
 {
-    protected static $products;
-
 
     public function view($id)
     {
-        if ($id) {
+
             $products = new Storage();
-            $product = $products->getProductItem($id);
+            $product = $products->findOne($id);
+            if (!$product){
+                exit("No products with this id");
+                // need an exeption;
+            }
             $this->setData($product);
-        } else {
-            echo "No products with this id";
-        }
     }
 }

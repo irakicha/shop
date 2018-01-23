@@ -31,8 +31,8 @@ class AuthController extends Controller
     public function login()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $name = trim(strip_tags($_POST['login']));
-            $password = trim(strip_tags($_POST['password']));
+            $name =(string)  trim(strip_tags($_POST['login']));
+            $password =abs((int) $_POST['password']);
 
             if (!Users::userExist($name, $password)) {
                 $errors[]= "you should register first";
