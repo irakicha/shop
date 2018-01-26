@@ -14,31 +14,10 @@ use Core\Model;
 class Storage extends Model {
 
     public $table = 'products';
+
+
+    public function buy ($id, $qty){
+        $product = $this->findOne('id', $id);
+        var_dump($product);
+    }
 }
-
-
-
-//class Storage extends Model
-//{
-//    private $storage;
-//
-//    public function __construct()
-//    {
-//        $this->storage = require_once APP_PATH."/data/products.php";
-//    }
-//
-//    public function getProductList()
-//    {
-//        return $this->storage;
-//    }
-//
-//    public function getProductItem($id)
-//    {
-//        if (!$id) {
-//            //throw new Exception;
-//            echo "no product with this id";
-//        } else {
-//            return $this->storage[$id-1];
-//        }
-//    }
-//}

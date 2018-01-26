@@ -14,9 +14,17 @@ return [
 
     'product/([0-9]+)' =>'product/view/$1',
 
+    /*Category Controller*/
+
     /*show all products*/
 
-    'product/' => 'product/viewAll',
+    'category/viewAll' => 'category/viewAll',
+
+    'category/([a-z]+)' => 'category/view/$1',
+
+    /*CartController*/
+
+    'cart' => 'cart/view',
 
 
     /*AuthController*/
@@ -24,6 +32,12 @@ return [
     'auth/login' =>'auth/login',
 
     'auth/register' =>'auth/register',
+
+    'auth/logout' =>'auth/logout',
+
+    /*UserController*/
+
+    'user/([0-9]+)' =>'user/view/$1',
 
 
     /*MainBaseController*/

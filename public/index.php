@@ -15,4 +15,3 @@ require_once ROOTPATH.'/vendor/autoload.php';
 
 $router = new Core\Router();
 $router->run();
-

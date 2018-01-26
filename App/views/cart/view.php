@@ -1,10 +1,4 @@
-<?php
-    include_once "layouts/header.php";
-?>
 
-<main class="main basket-page">
-    <div class="container">
-        <div class="row">
             <h1 class="page-title">Basket</h1>
             <table class="table table-hover basket-table">
                 <thead class="thead-dark">
@@ -80,10 +74,3 @@
                     <button class="btn buy">Buy</button>
                 </div>
             </div>
-
-        </div>
-    </div>
-</main>
-<?php
-    include_once "layouts/footer.php";
-?>

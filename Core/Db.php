@@ -40,13 +40,12 @@ class Db
     /*
      * @return array
      * */
-    public function fetchAll($sql){
+    public function fetchAll($sql, $params=[]){
 
         $query = $this->pdo->prepare($sql);
-        $query->execute();
+        $query->execute($params);
         return $query->fetchAll();
     }
-
 
     /*
      * @return array
@@ -59,5 +58,10 @@ class Db
 
     }
 
+    public function fetchColumn ($sql, $column) {
+        $query = $this->pdo->prepare($sql);
+        $query->execute();
+        return $query->fetchAll(\PDO::FETCH_COLUMN, $column);
+    }
 
 }

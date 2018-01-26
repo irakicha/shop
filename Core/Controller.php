@@ -5,6 +5,9 @@
 
 namespace Core;
 
+use App\Controllers\AuthController;
+use App\Models\Users;
+
 abstract class Controller
 {
 
@@ -40,9 +43,11 @@ abstract class Controller
     public function __construct($route)
     {
         $this->route = $route;
-        $this->view = $route['action'];
         $this->controller_name = $route['controller'];
+        $this->view = $route['action'];
+        Session::sessionStart();
     }
+
 
     public function getView()
     {

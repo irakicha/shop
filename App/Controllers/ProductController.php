@@ -8,21 +8,21 @@
 
 namespace App\Controllers;
 
-use Core\Controller;
+use Core\BaseController;
 use App\Models\Storage;
 
-class ProductController extends Controller
+class ProductController extends BaseController
 {
-
     public function view($id)
     {
 
-            $products = new Storage();
-            $product = $products->findOne($id);
-            if (!$product){
-                exit("No products with this id");
+        $products = new Storage();
+        $product = $products->findOne('id', $id);
+        if (!$product){
+            exit("No products with this id");
                 // need an exeption;
             }
             $this->setData($product);
     }
+
 }

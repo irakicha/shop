@@ -29,8 +29,8 @@ class View
     public function __construct($controller_name, $view = '', $layout = '')
     {
         $this->controller_name=$controller_name;
-        $this->view = $view;
         $this->layout = $layout?:"default";
+        $this->view = $view;
     }
 
     public function render($data)

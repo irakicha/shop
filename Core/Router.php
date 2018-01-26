@@ -108,4 +108,8 @@ class Router
             }
         }
     }
+
+    public static function redirect($path){
+        return header("location:$path");
+    }
 }

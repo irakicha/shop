@@ -2,23 +2,21 @@
 /**
  *
  */
+
 ?>
 <div class="container login-page">
     <div class="row">
-
         <h1>Login page</h1>
 
         <div class="container">
             <div class="row">
                 <?php if (!empty($data)) : ?>
-                    <ul>
-                        <?php foreach ($data as $error) : ?>
-                            <p class="error">
-                                <?php echo $error;?>
-                            </p>
-                        <?php endforeach; ?>
-                    </ul>
 
+                        <?php foreach ($data as $error) : ?>
+                            <div class="alert alert-info" role="alert">
+                                <?php echo $error;?>
+                            </div>
+                        <?php endforeach; ?>
 
                 <?php endif; ?>
             </div>

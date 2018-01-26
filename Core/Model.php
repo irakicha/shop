@@ -29,14 +29,40 @@ abstract class Model
         return $this->pdo->fetchAll($sql);
     }
 
-    /*
-     * Select one record from $table according id
-     * */
-    public function findOne($id)
+    public function findAllParams($field, $value)
     {
-        $sql = "SELECT * FROM {$this->table} WHERE id=?";
-        return $this->pdo->fetchOne($sql, [$id]);
+        $sql = "SELECT * FROM {$this->table} WHERE $field = ?";
+        return $this->pdo->fetchAll($sql, [$value]);
     }
+
+    /*
+     * Select one record from $table according value
+     * */
+    public function findOne($field, $value)
+    {
+        $sql = "SELECT * FROM {$this->table} WHERE $field = ?";
+        return $this->pdo->fetchOne($sql, [$value]);
+    }
+
+    public function findOneByColumn($col, $field,$value)
+    {
+        $sql = "SELECT $col FROM {$this->table} WHERE $field = ?";
+        return $this->pdo->fetchOne($sql, [$value]);
+    }
+
+    /*
+     * Select one column from query
+     * */
+
+    public function findColumn($column)
+    {
+        $sql = "SELECT * FROM {$this->table}";
+        return $this->pdo->fetchColumn($sql,$column);
+    }
+
+    /*
+     * Select from two tables
+     * */
 
     /*
      * Disconnect PDO

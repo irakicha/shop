@@ -10,12 +10,13 @@ namespace Core;
 
 class Session
 {
+
     public static function getName()
     {
         return session_name();
     }
 
-    public function setName($name)
+    public static function setName($name)
     {
         return session_name($name);
     }
@@ -50,7 +51,7 @@ class Session
 
     public static function sessionStart()
     {
-        if (self::cookieExist() == false) {
+        if (!isset($_SESSION)) {
             session_start();
             return true;
         }
@@ -68,7 +69,7 @@ class Session
         return false;
     }
 
-    public function keyExist($key)
+    public static function keyExist($key)
     {
         if (array_key_exists($key, $_SESSION)) {
             return true;
@@ -76,9 +77,9 @@ class Session
         return false;
     }
 
-    public function setKey($key, $value)
+    public static function setKey($key, $value)
     {
-        if ($this->keyExist($key) == false) {
+        if (self::keyExist($key) == false) {
             $_SESSION[$key] = $value;
             return true;
         }
@@ -86,7 +87,7 @@ class Session
     }
 
 
-    public function deleteKey($key)
+    public static function deleteKey($key)
     {
         if (isset($_SESSION[$key])) {
             unset($_SESSION[$key]);
@@ -95,9 +96,9 @@ class Session
         return false;
     }
 
-    public function setSaveSessionPath($path)
+    public static function setSaveSessionPath($path)
     {
-        $this->setSaveSessionPath($path);
+        self::setSaveSessionPath($path);
     }
 
 }

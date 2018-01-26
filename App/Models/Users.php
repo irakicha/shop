@@ -9,27 +9,39 @@
 namespace App\Models;
 
 use Core\Model;
+use Core\Session;
 
 class Users extends Model
 {
-    private static $users;
+    public $table = 'users';
+    public $user = [];
 
-    public static function getAllUsers()
+
+    protected function getAllUsers()
     {
-        self::$users = require_once ROOTPATH.'/App/config/users.php';
-        return self::$users;
+        return $this->findAll();
     }
 
-    public static function getUserLogin($name)
-    {
-        foreach (self::getAllUsers() as $user) {
-            if ($name == $user['login']) {
-                return $user['login'];
-            } else {
-                return false;
-            }
+    public function getUserLogin($login){
+        if ($login){
+            return $this->findOne('login', $login);
+        } else {
+            return false;
         }
     }
+
+    public function authUser($login,$password)
+    {
+
+        $user = parent::findOne('login', $login);
+
+        if ($user && $user['password'] == $password) {
+            return $user;
+        } else {
+            return false;
+        }
+    }
+
 
     public static function setUser($name, $login)
     {
@@ -38,29 +50,21 @@ class Users extends Model
                 'name' => $name,
                 'login' => $login
             ];
-            return self::$users;
+//            return self::$users;
         } else {
             return false;
         }
     }
 
-    public static function userExist($name, $password)
+    public function logOut()
     {
-        foreach (self::getAllUsers() as $user) {
-            if ($name == $user['login'] && $password == $user['password']) {
-                echo $user['login'];
-                echo $user['password'];
-                return true;
-            } else {
-                return false;
-            }
-        }
+        Session::sessionDestroy();
     }
 
 
-    public static function checkName($name)
+    public static function checkName($login)
     {
-        if (strlen($name) > 3) {
+        if (strlen($login) > 3) {
             return true;
         }
         return false;

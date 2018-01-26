@@ -8,36 +8,38 @@
 
 namespace App\Controllers;
 
-use Core\Controller;
+use Core\Auth;
+use Core\BaseController;
 use App\Models\Users;
+use Core\Controller;
+use Core\Router;
 use Core\Session;
 
 
-class AuthController extends Controller
+class AuthController extends Controller 
 {
     public $name='';
     public $password='';
     public $errors = [];
-
-    protected function isAuth()
-    {
-        if (Session::sessionExist()) {
-            return true;
-        } else {
-            return false;
-        }
-    }
+    public $is_auth = true;
 
     public function login()
     {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $name =(string)  trim(strip_tags($_POST['login']));
-            $password =abs((int) $_POST['password']);
 
-            if (!Users::userExist($name, $password)) {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $login = $this->clearString($_POST['login']);
+            $password = $this->clearString($_POST['password']);
+
+            $user = new Users();
+
+            if (!$user->authUser($login, $password)) {
                 $errors[]= "you should register first";
             } else {
-                Session::sessionStart();
+                Session::setKey('user', $login);
+                Session::setKey('user', $login);
+//                Router::redirect('/user/view');
+
+                return true;
             }
 
             if (!empty($errors)) {
@@ -50,10 +52,10 @@ class AuthController extends Controller
     public function register()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $name = trim(strip_tags($_POST['login']));
-            $password = trim(strip_tags($_POST['password']));
+            $login = $this->clearString($_POST['login']);
+            $password = $this->clearString($_POST['password']);
 
-            if (!Users::checkName($name)) {
+            if (!Users::checkName($login)) {
                 $errors[]= "login is too short";
             }
 
@@ -61,10 +63,12 @@ class AuthController extends Controller
                 $errors[]= "password is too short";
             }
 
-            if (Users::getUserLogin($name)) {
+            $new_user = new Users();
+
+            if ($new_user->getUserLogin($login)) {
                 $errors[]= "this login already exist";
             } else {
-                Users::setUser($name, $password);
+                echo $new_user->getUserLogin($login);
             }
 
             if (!empty($errors)) {
@@ -73,7 +77,17 @@ class AuthController extends Controller
         }
     }
 
-    protected function logOut()
+    public function clearString ($string)
+    {
+        return strval(trim(strip_tags($string)));
+    }
+
+    function getHash($password){
+        $hash = password_hash($password, PASSWORD_BCRYPT);
+        return $hash;
+    }
+
+    public function logout()
     {
         Session::sessionDestroy();
     }
