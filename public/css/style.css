@@ -104,8 +104,8 @@ a:hover {
 }
 
 .service-links i {
-    font-size: 20px;
-    padding-top: 7px;
+    font-size: 16px;
+    padding-top: 10px;
 }
 
 /*MAIN*/
@@ -211,7 +211,7 @@ a:hover {
 }
 
 .footer-container {
-    background: url("/images/bg-footer.svg") left bottom;
+    background: url("../images/bg-footer.svg") left bottom;
     height: 100%;
     position: relative;
 }
@@ -377,6 +377,22 @@ input.product__count-input {
 
 .category-title{
     text-align: center;
+    text-transform: capitalize;
+
+}
+
+
+/*Logout page*/
+.logout-page{
+    padding-top: 30px;
+    margin-bottom: 60px;
+}
+
+/*Account page*/
+
+.account-page {
+    padding-top: 30px;
+    margin-bottom: 60px;
 }
 
 

@@ -7,10 +7,11 @@
  */
 
 ?>
-<div class="container">
+<div class="container logout-page">
     <div class="row">
-        <div class="column">
-            <p>Coodbye!</p>
+        <div class="column ">
+            <h1>Coodbye! <?php echo $data?></h1>
+            <a href="/" class="btn add-to-cart">Home</a>
         </div>
     </div>
 </div>

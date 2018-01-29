@@ -28,6 +28,15 @@ class Db
         return self::$instance;
     }
 
+    public function query($sql){
+        $query = $this->pdo->prepare($sql);
+        $result =  $query->execute();
+        if ($result === false) {
+            return false;
+        }
+        return true;
+    }
+
     /*
      * @return bool
      * */

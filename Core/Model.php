@@ -21,6 +21,13 @@ abstract class Model
     }
 
     /*
+     * Select all records according Sql query
+     * */
+    public function findSql($sql, $params=[]){
+        return $this->pdo->query($sql, $params);
+    }
+
+    /*
      * Select all records from $table
      * */
     public function findAll()
@@ -29,6 +36,9 @@ abstract class Model
         return $this->pdo->fetchAll($sql);
     }
 
+    /*
+     * Select all records from $table where field = $field
+     * */
     public function findAllParams($field, $value)
     {
         $sql = "SELECT * FROM {$this->table} WHERE $field = ?";
@@ -44,6 +54,9 @@ abstract class Model
         return $this->pdo->fetchOne($sql, [$value]);
     }
 
+    /*
+     * Select one record from $table according column name and value
+     * */
     public function findOneByColumn($col, $field,$value)
     {
         $sql = "SELECT $col FROM {$this->table} WHERE $field = ?";
@@ -60,9 +73,7 @@ abstract class Model
         return $this->pdo->fetchColumn($sql,$column);
     }
 
-    /*
-     * Select from two tables
-     * */
+
 
     /*
      * Disconnect PDO

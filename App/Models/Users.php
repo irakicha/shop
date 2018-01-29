@@ -24,7 +24,7 @@ class Users extends Model
 
     public function getUserLogin($login){
         if ($login){
-            return $this->findOne('login', $login);
+            return $this->findOneByColumn('login', 'login', $login);
         } else {
             return false;
         }
@@ -32,14 +32,18 @@ class Users extends Model
 
     public function authUser($login,$password)
     {
-
         $user = parent::findOne('login', $login);
 
         if ($user && $user['password'] == $password) {
-            return $user;
+            return true;
         } else {
             return false;
         }
+    }
+
+    public function getUserInfo($login){
+        $user = $this->findOne('login', $login);
+        return $user;
     }
 
 
@@ -54,11 +58,6 @@ class Users extends Model
         } else {
             return false;
         }
-    }
-
-    public function logOut()
-    {
-        Session::sessionDestroy();
     }
 
 

@@ -14,6 +14,9 @@ return [
 
     'product/([0-9]+)' =>'product/view/$1',
 
+    'category/product/([0-9]+)' =>'product/view/$1',
+
+
     /*Category Controller*/
 
     /*show all products*/
@@ -22,9 +25,12 @@ return [
 
     'category/([a-z]+)' => 'category/view/$1',
 
+
     /*CartController*/
 
     'cart' => 'cart/view',
+
+    'cart/add/([0-9]+)' => 'cart/add/$1',
 
 
     /*AuthController*/
@@ -35,9 +41,10 @@ return [
 
     'auth/logout' =>'auth/logout',
 
+
     /*UserController*/
 
-    'user/([0-9]+)' =>'user/view/$1',
+    'account/([a-z]+)' =>'account/view/$1',
 
 
     /*MainBaseController*/

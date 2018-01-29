@@ -18,34 +18,36 @@ use Core\Session;
 
 class AuthController extends Controller 
 {
-    public $name='';
+    public $login='';
     public $password='';
     public $errors = [];
     public $is_auth = true;
 
     public function login()
     {
+        if (Session::keyExist('login')){
+            Router::redirect('/account/'.Session::getKey('login'));
+        } else {
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $login = $this->clearString($_POST['login']);
+                $password = $this->clearString($_POST['password']);
 
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $login = $this->clearString($_POST['login']);
-            $password = $this->clearString($_POST['password']);
+                $user = new Users();
 
-            $user = new Users();
+                if (!$user->authUser($login, $password)) {
+                    $errors[]= "you should register first";
+                } else {
+                    Session::setKey('login', $login);
+                    Router::redirect('/account/'.$login);
 
-            if (!$user->authUser($login, $password)) {
-                $errors[]= "you should register first";
-            } else {
-                Session::setKey('user', $login);
-                Session::setKey('user', $login);
-//                Router::redirect('/user/view');
+                    return true;
+                }
 
-                return true;
+                if (!empty($errors)) {
+                    $this->setData($errors);
+                }
+
             }
-
-            if (!empty($errors)) {
-                $this->setData($errors);
-            }
-
         }
     }
 
@@ -69,12 +71,21 @@ class AuthController extends Controller
                 $errors[]= "this login already exist";
             } else {
                 echo $new_user->getUserLogin($login);
+
             }
 
             if (!empty($errors)) {
                 $this->setData($errors);
             }
         }
+    }
+
+    public static function isAuth()
+    {
+        if (Session::keyExist('login')){
+            return true;
+        }
+        return false;
     }
 
     public function clearString ($string)
@@ -89,6 +100,8 @@ class AuthController extends Controller
 
     public function logout()
     {
+        $login = Session::getKey('login');
+        $this->setData($login);
         Session::sessionDestroy();
     }
 

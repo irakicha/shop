@@ -41,7 +41,7 @@
                         <?php echo $product['price']; ?><span class="product-price_currency">USD</span>
                     </div>
                     <div class="col-6 btn-container">
-                        <a href="/classes/AddToBasket.php?id=<?= $product['id'] ?>" class="btn add-to-cart">Add To
+                        <a href="/cart/add/<?php echo $product['id'] ?>" class="btn add-to-cart">Add To
                             Cart</a>
                     </div>
                 </div>
