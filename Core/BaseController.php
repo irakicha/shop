@@ -11,13 +11,13 @@ namespace Core;
 
 class BaseController extends Controller
 {
-    protected function isAuth()
+    public static function isAuth()
     {
-        if (Session::sessionExist()) {
+        if (Session::keyExist('login')) {
             return true;
-        } else {
-            return false;
         }
+        return false;
+
     }
 
 

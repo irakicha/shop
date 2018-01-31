@@ -11,7 +11,7 @@ class View
      * current controller name
      * @var string
      * */
-    public $controller_name;
+    public $controllerName;
 
     /*
      * current view
@@ -26,9 +26,9 @@ class View
     public $layout;
 
 
-    public function __construct($controller_name, $view = '', $layout = '')
+    public function __construct($controllerName, $view = '', $layout = '')
     {
-        $this->controller_name=$controller_name;
+        $this->controllerName=$controllerName;
         $this->layout = $layout?:"default";
         $this->view = $view;
     }
@@ -40,22 +40,22 @@ class View
             extract($data);
         }
 
-        $file_view = VIEW_PATH.$this->controller_name.DIRECTORY_SEPARATOR.$this->view.'.php';
+        $fileView = VIEW_PATH.$this->controllerName.DIRECTORY_SEPARATOR.$this->view.'.php';
         ob_start();
-        if (is_file($file_view)) {
-            require_once $file_view;
-        } else {
-            echo "View not found".$file_view;
+        if (!is_file($fileView)) {
+            echo "View not found".$fileView;
         }
+        require_once $fileView;
+
         $content = ob_get_clean();
 
 
-        $file_layout = VIEW_PATH."layouts".DIRECTORY_SEPARATOR.$this->layout.'.php';
+        $fileLayout = VIEW_PATH."layouts".DIRECTORY_SEPARATOR.$this->layout.'.php';
 
-        if (is_file($file_layout)) {
-            require_once $file_layout;
-        } else {
-            echo "layout not found".$file_layout;
+        if (!is_file($fileLayout)) {
+            echo "layout not found".$fileLayout;
         }
+        require_once $fileLayout;
+
     }
 }

@@ -17,14 +17,15 @@ abstract class Model
 
     public function query($sql)
     {
-        return $this->pdo->execute($sql);
+        return $this->pdo->query($sql);
     }
 
     /*
      * Select all records according Sql query
      * */
-    public function findSql($sql, $params=[]){
-        return $this->pdo->query($sql, $params);
+    public function findSql($sql, $params=[])
+    {
+        return $this->pdo->execute($sql, $params);
     }
 
     /*
@@ -57,22 +58,27 @@ abstract class Model
     /*
      * Select one record from $table according column name and value
      * */
-    public function findOneByColumn($col, $field,$value)
+    public function findOneFieldInColumn($column, $field, $value)
     {
-        $sql = "SELECT $col FROM {$this->table} WHERE $field = ?";
-        return $this->pdo->fetchOne($sql, [$value]);
+        $sql = "SELECT * FROM {$this->table} WHERE $field = ?";
+        list($colName) = $this->pdo->fetchColumn($sql, $column , [$value]);
+        return $colName;
     }
 
     /*
      * Select one column from query
      * */
 
-    public function findColumn($column)
+    public function findAllInColumn($column, $field='', $value='')
     {
+        if ($field && $value) {
+            $sql = "SELECT * FROM {$this->table} WHERE $field = ?";
+            return $this->pdo->fetchColumn($sql, $column , [$value]);
+        }
         $sql = "SELECT * FROM {$this->table}";
-        return $this->pdo->fetchColumn($sql,$column);
-    }
+        return $this->pdo->fetchColumn($sql, $column);
 
+    }
 
 
     /*

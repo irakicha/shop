@@ -18,11 +18,11 @@ class ProductController extends BaseController
 
         $products = new Storage();
         $product = $products->findOne('id', $id);
-        if (!$product){
+        if (!$product) {
             exit("No products with this id");
-                // need an exeption;
-            }
-            $this->setData($product);
+            // need an exeption;
+        }
+        $this->setData($product);
     }
 
 }

@@ -22,12 +22,13 @@ class Users extends Model
         return $this->findAll();
     }
 
-    public function getUserLogin($login){
+    public function getUserLogin($login)
+    {
         if ($login){
-            return $this->findOneByColumn('login', 'login', $login);
-        } else {
-            return false;
+            return $this->findOneFieldInColumn(3, 'login', $login);
         }
+        return false;
+
     }
 
     public function authUser($login,$password)
@@ -36,9 +37,9 @@ class Users extends Model
 
         if ($user && $user['password'] == $password) {
             return true;
-        } else {
-            return false;
         }
+        return false;
+
     }
 
     public function getUserInfo($login){
@@ -50,14 +51,10 @@ class Users extends Model
     public static function setUser($name, $login)
     {
         if ($name && $login) {
-            self::$users[] = [
-                'name' => $name,
-                'login' => $login
-            ];
+//            $this->findSql()
 //            return self::$users;
-        } else {
-            return false;
         }
+        return false;
     }
 
 

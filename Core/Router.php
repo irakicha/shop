@@ -50,6 +50,7 @@ class Router
 
         foreach ($this->routes as $pattern => $value) {
             if (preg_match('#^'.$pattern.'$#', $this->uri)) {
+
                 $internalPath = preg_replace('#^'.$pattern.'$#', $value, $this->uri);
                 $route = explode('/', $internalPath);
                 $route = array_pad($route, 3, '');
@@ -75,41 +76,40 @@ class Router
         if (!$route) {
             echo "page not found";
             header("HTTP/1.1 404 Not Found");
-        } else {
-            $controller =ucfirst($route['controller']).'Controller';
-
-            $controller_path = 'App\Controllers\\'.$controller;
-
-            if (class_exists($controller_path)) {
-                $controller = new $controller_path($route);
-
-                $action = $route['action'];
-
-                if (method_exists($controller_path, $action)) {
-                    $params = $route['params'];
-
-                    if ($params) {
-                        $controller ->$action($params);
-                    } else {
-                        $controller ->$action();
-                    }
-
-
-                } else {
-                    //throw new Exception("No method");
-                    echo "Method not found";
-                }
-
-                $controller->getView();
-
-            } else {
-                //throw new Exception("No Controller");
-                echo "controller not found";
-            }
         }
+
+        $controller =ucfirst($route['controller']).'Controller';
+
+        $controllerPath = 'App\Controllers\\'.$controller;
+
+        if (!class_exists($controllerPath)) {
+            //throw new Exception("No Controller");
+            echo "controller not found";
+        }
+
+        $controller = new $controllerPath($route);
+
+        $action = $route['action'];
+
+        if (!method_exists($controllerPath, $action)) {
+            //throw new Exception("No method");
+            echo "Method not found";
+        }
+
+        $params = $route['params'];
+
+        if (!$params) {
+            $controller ->$action();
+        }
+
+        $controller ->$action($params);
+
+        $controller->getView();
+
     }
 
-    public static function redirect($path){
+    public static function redirect($path)
+    {
         return header("location:$path");
     }
 }

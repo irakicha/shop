@@ -8,47 +8,60 @@
 
 namespace App\Models;
 
-
-use App\Controllers\AuthController;
+use Core\BaseController;
 use Core\Model;
+use Core\Router;
 use Core\Session;
 
 class Storage extends Model {
 
     public $table = 'products';
 
+    public function getProductsByCategory($field)
+    {
 
-    public function addProduct ($id){
+        return $this->findAllParams('category_id',$field);
 
-        if (AuthController::isAuth()){
-//            $product = $this->findOne('id', $id);
-
-            if (true){
-
-                $product_in_cart =[];
-
-                if (Session::keyExist('cart')){
-                    $product_in_cart = $_SESSION['cart'];
-                }
+    }
 
 
-                if (array_key_exists($id, $product_in_cart)){
-                    $product_in_cart[$id] ++;
-                } else {
-                    $product_in_cart[$id] = 1;
-                }
+    public function addProduct ($id)
+    {
 
-                $_SESSION['cart'] = $product_in_cart;
-
-                var_dump($_SESSION);
-
-
-            } else {
-                echo "no products with this id";
-            }
-        } else {
-            echo "You should login first";
+        if (!BaseController::isAuth()){
+            Router::redirect('/auth/login');
         }
+
+        if (!$this->findOne('id', $id)){
+            echo "no products with this id";
+            exit();
+        }
+
+        var_dump($this->findOneFieldInColumn(8, 'id', $id));
+
+        if ($this->findOneFieldInColumn(8, 'id', $id) == 0){
+            echo "out of stock";
+            exit();
+        }
+
+
+        $productInCart =[];
+
+        if (Session::keyExist('cart')){
+            $productInCart = $_SESSION['cart'];
+        }
+
+
+        if (array_key_exists($id, $productInCart)){
+            $productInCart[$id] ++;
+        } else {
+            $productInCart[$id] = 1;
+        }
+
+        $_SESSION['cart'] = $productInCart;
+
+        var_dump($_SESSION);
+
 
     }
 }

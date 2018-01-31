@@ -17,16 +17,16 @@ class CategoryController extends BaseController
 {
     public function viewAll() {
         $model = new Categories();
-        $categories = $model->findColumn(1);
+        $categories = $model->getAllCategoriesName();
         $this->setData($categories);
     }
 
     public function view($name)
     {
-        $model_1 = new Categories();
-        $model_2 = new Storage();
-        $cat_id =$model_1->findOneByColumn('id', 'title', $name)['id'];
-        $cat_products = $model_2->findAllParams('category_id',$cat_id);
-        $this->setData($cat_products);
+        $modelCategory = new Categories();
+        $modelStorage =new Storage();
+        $catId = $modelCategory->getIdByName($name);
+        $catProducts = $modelStorage->getProductsByCategory($catId);
+        $this->setData($catProducts);
     }
 }

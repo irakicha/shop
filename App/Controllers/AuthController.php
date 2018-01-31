@@ -11,49 +11,47 @@ namespace App\Controllers;
 use Core\Auth;
 use Core\BaseController;
 use App\Models\Users;
-use Core\Controller;
+use Core\RequestMethod;
 use Core\Router;
 use Core\Session;
 
 
-class AuthController extends Controller 
+class AuthController extends BaseController
 {
     public $login='';
     public $password='';
     public $errors = [];
-    public $is_auth = true;
 
     public function login()
     {
-        if (Session::keyExist('login')){
+        if (Session::keyExist('login')) {
             Router::redirect('/account/'.Session::getKey('login'));
-        } else {
-            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                $login = $this->clearString($_POST['login']);
-                $password = $this->clearString($_POST['password']);
+        }
 
-                $user = new Users();
+        if (RequestMethod::isPost()) {
+            $login = $this->clearString($_POST['login']);
+            $password = $this->clearString($_POST['password']);
 
-                if (!$user->authUser($login, $password)) {
-                    $errors[]= "you should register first";
-                } else {
-                    Session::setKey('login', $login);
-                    Router::redirect('/account/'.$login);
+            $user = new Users();
 
-                    return true;
-                }
-
-                if (!empty($errors)) {
-                    $this->setData($errors);
-                }
-
+            if (!$user->authUser($login, $password)) {
+                $errors[]= "you should register first";
             }
+
+            Session::setKey('login', $login);
+            Router::redirect('/account/'.$login);
+
+
+            if (!empty($errors)) {
+                $this->setData($errors);
+            }
+
         }
     }
 
     public function register()
     {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if (RequestMethod::isPost()) {
             $login = $this->clearString($_POST['login']);
             $password = $this->clearString($_POST['password']);
 
@@ -65,14 +63,14 @@ class AuthController extends Controller
                 $errors[]= "password is too short";
             }
 
-            $new_user = new Users();
+            $newUser = new Users();
 
-            if ($new_user->getUserLogin($login)) {
+            if ($newUser->getUserLogin($login)) {
                 $errors[]= "this login already exist";
-            } else {
-                echo $new_user->getUserLogin($login);
-
             }
+
+            //регистрируем нового пользователя и редиректим в личный каибинет
+
 
             if (!empty($errors)) {
                 $this->setData($errors);
@@ -80,20 +78,13 @@ class AuthController extends Controller
         }
     }
 
-    public static function isAuth()
-    {
-        if (Session::keyExist('login')){
-            return true;
-        }
-        return false;
-    }
-
     public function clearString ($string)
     {
         return strval(trim(strip_tags($string)));
     }
 
-    function getHash($password){
+    function getHash($password)
+    {
         $hash = password_hash($password, PASSWORD_BCRYPT);
         return $hash;
     }
@@ -104,6 +95,5 @@ class AuthController extends Controller
         $this->setData($login);
         Session::sessionDestroy();
     }
-
 
 }

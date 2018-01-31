@@ -15,12 +15,12 @@ class AccountController extends BaseController
 {
     public function view($id)
     {
-        if (Session::keyExist('login')){
-            $model = new Users();
-            $user = $model->getUserInfo($id);
-            $this->setData($user);
-        } else {
+        if (!self::isAuth()) {
             Router::redirect('/');
         }
+
+        $model = new Users();
+        $user = $model->getUserInfo($id);
+        $this->setData($user);
     }
 }

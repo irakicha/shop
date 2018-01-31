@@ -14,4 +14,14 @@ use Core\Model;
 class Categories extends Model
 {
     public $table = 'categories';
+
+    public function getAllCategoriesName()
+    {
+        return $this->findAllInColumn(1);
+    }
+
+    public function getIdByName($name)
+    {
+        return $this->findOneFieldInColumn(0, 'title', $name);
+    }
 }

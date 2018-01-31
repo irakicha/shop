@@ -22,12 +22,12 @@ class CartController extends BaseController
 
     public function add($id)
     {
-        if ($id) {
-            $model = new Storage();
-            $added_product = $model->addProduct($id);
-//            Router::redirect($_SERVER['HTTP_REFERER']);
+        if (!self::isAuth()) {
+            Router::redirect('/auth/login');
         }
-        return false;
+        $model = new Storage();
+        $addedProduct = $model->addProduct($id);
+//            Router::redirect($_SERVER['HTTP_REFERER']);
     }
 
 }

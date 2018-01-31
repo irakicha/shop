@@ -35,18 +35,16 @@ class Session
     {
         if (isset($_COOKIE[self::getName()])) {
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 
     public static function sessionExist()
     {
         if (!self::getSessionId()) {
             return false;
-        } else {
-            return true;
         }
+        return true;
     }
 
     public static function sessionStart()
@@ -63,7 +61,6 @@ class Session
         if (self::sessionExist() == true) {
             session_destroy();
             unset($_SESSION[self::getName()]);
-
             return true;
         }
         return false;
@@ -106,7 +103,7 @@ class Session
 
     public static function setSaveSessionPath($path)
     {
-        self::setSaveSessionPath($path);
+        return self::session_save_path($path);
     }
 
 }
