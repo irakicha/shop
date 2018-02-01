@@ -17,7 +17,5 @@ class MainController extends BaseController
         $products = $model->findAll();
         print_r($_SESSION);
         $this->setData($products);
-
     }
-
 }

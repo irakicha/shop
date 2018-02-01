@@ -103,7 +103,6 @@ class Session
 
     public static function setSaveSessionPath($path)
     {
-        return self::session_save_path($path);
+        return session_save_path($path);
     }
-
 }

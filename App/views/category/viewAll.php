@@ -20,7 +20,7 @@
 
     <section class="container product-categories">
         <div class="row justify-content-between">
-            <?php foreach ($data as $category_title): ?>
+            <?php foreach ($data as $category_title) : ?>
                 <div class="col-3 category-title">
                     <h2>
                         <a href="/category/<?php echo $category_title; ?>">

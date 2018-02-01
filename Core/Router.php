@@ -50,7 +50,6 @@ class Router
 
         foreach ($this->routes as $pattern => $value) {
             if (preg_match('#^'.$pattern.'$#', $this->uri)) {
-
                 $internalPath = preg_replace('#^'.$pattern.'$#', $value, $this->uri);
                 $route = explode('/', $internalPath);
                 $route = array_pad($route, 3, '');
@@ -105,7 +104,6 @@ class Router
         $controller ->$action($params);
 
         $controller->getView();
-
     }
 
     public static function redirect($path)

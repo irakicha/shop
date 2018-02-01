@@ -9,7 +9,6 @@
 namespace App\Models;
 
 use Core\Model;
-use Core\Session;
 
 class Users extends Model
 {
@@ -24,14 +23,13 @@ class Users extends Model
 
     public function getUserLogin($login)
     {
-        if ($login){
+        if ($login) {
             return $this->findOneFieldInColumn(3, 'login', $login);
         }
         return false;
-
     }
 
-    public function authUser($login,$password)
+    public function authUser($login, $password)
     {
         $user = parent::findOne('login', $login);
 
@@ -39,10 +37,10 @@ class Users extends Model
             return true;
         }
         return false;
-
     }
 
-    public function getUserInfo($login){
+    public function getUserInfo($login)
+    {
         $user = $this->findOne('login', $login);
         return $user;
     }
@@ -73,5 +71,4 @@ class Users extends Model
         }
         return false;
     }
-
 }

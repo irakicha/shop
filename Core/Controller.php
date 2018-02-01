@@ -5,9 +5,6 @@
 
 namespace Core;
 
-use App\Controllers\AuthController;
-use App\Models\Users;
-
 abstract class Controller
 {
 
@@ -59,5 +56,4 @@ abstract class Controller
     {
         $this->data = $data;
     }
-
 }

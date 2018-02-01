@@ -8,7 +8,6 @@
 
 namespace App\Controllers;
 
-
 use App\Models\Storage;
 use Core\BaseController;
 use Core\Router;
@@ -29,5 +28,4 @@ class CartController extends BaseController
         $addedProduct = $model->addProduct($id);
 //            Router::redirect($_SERVER['HTTP_REFERER']);
     }
-
 }

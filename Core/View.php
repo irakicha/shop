@@ -56,6 +56,5 @@ class View
             echo "layout not found".$fileLayout;
         }
         require_once $fileLayout;
-
     }
 }

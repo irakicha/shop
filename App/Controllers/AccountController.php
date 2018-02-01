@@ -9,7 +9,6 @@ namespace App\Controllers;
 use App\Models\Users;
 use Core\BaseController;
 use Core\Router;
-use Core\Session;
 
 class AccountController extends BaseController
 {

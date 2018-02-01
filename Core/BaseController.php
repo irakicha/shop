@@ -8,7 +8,6 @@
 
 namespace Core;
 
-
 class BaseController extends Controller
 {
     public static function isAuth()
@@ -17,8 +16,5 @@ class BaseController extends Controller
             return true;
         }
         return false;
-
     }
-
-
 }

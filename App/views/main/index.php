@@ -11,8 +11,7 @@
 
     <section class="row justify-content-between product-gallery">
 
-        <?php foreach ($data as $product): ?>
-
+        <?php foreach ($data as $product) : ?>
             <div class="col-12 col-md-5 col-lg-3 product">
                 <div class="product-img">
                     <a href="/product/<?php echo $product['id']; ?>" class="product-link">

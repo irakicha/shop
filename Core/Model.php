@@ -4,7 +4,6 @@
 
 namespace Core;
 
-
 abstract class Model
 {
     protected $pdo;
@@ -23,7 +22,7 @@ abstract class Model
     /*
      * Select all records according Sql query
      * */
-    public function findSql($sql, $params=[])
+    public function findSql($sql, $params = [])
     {
         return $this->pdo->execute($sql, $params);
     }
@@ -61,7 +60,7 @@ abstract class Model
     public function findOneFieldInColumn($column, $field, $value)
     {
         $sql = "SELECT * FROM {$this->table} WHERE $field = ?";
-        list($colName) = $this->pdo->fetchColumn($sql, $column , [$value]);
+        list($colName) = $this->pdo->fetchColumn($sql, $column, [$value]);
         return $colName;
     }
 
@@ -69,22 +68,21 @@ abstract class Model
      * Select one column from query
      * */
 
-    public function findAllInColumn($column, $field='', $value='')
+    public function findAllInColumn($column, $field = '', $value = '')
     {
         if ($field && $value) {
             $sql = "SELECT * FROM {$this->table} WHERE $field = ?";
-            return $this->pdo->fetchColumn($sql, $column , [$value]);
+            return $this->pdo->fetchColumn($sql, $column, [$value]);
         }
         $sql = "SELECT * FROM {$this->table}";
         return $this->pdo->fetchColumn($sql, $column);
-
     }
 
 
     /*
      * Disconnect PDO
      * */
-    public function disconnect ()
+    public function disconnect()
     {
         if ($this->pdo) {
             $this->pdo = null;

@@ -11,13 +11,11 @@
         <div class="container">
             <div class="row">
                 <?php if (!empty($data)) : ?>
-
                         <?php foreach ($data as $error) : ?>
                             <div class="alert alert-info" role="alert">
                                 <?php echo $error;?>
                             </div>
                         <?php endforeach; ?>
-
                 <?php endif; ?>
     </div>
 </div>

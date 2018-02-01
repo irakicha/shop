@@ -8,13 +8,11 @@
 
 namespace App\Controllers;
 
-use Core\Auth;
 use Core\BaseController;
 use App\Models\Users;
 use Core\RequestMethod;
 use Core\Router;
 use Core\Session;
-
 
 class AuthController extends BaseController
 {
@@ -78,12 +76,12 @@ class AuthController extends BaseController
         }
     }
 
-    public function clearString ($string)
+    public function clearString($string)
     {
         return strval(trim(strip_tags($string)));
     }
 
-    function getHash($password)
+    protected function getHash($password)
     {
         $hash = password_hash($password, PASSWORD_BCRYPT);
         return $hash;

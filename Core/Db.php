@@ -28,7 +28,7 @@ class Db
         return self::$instance;
     }
 
-    public function query($sql, $params=[])
+    public function query($sql, $params = [])
     {
         $query = $this->pdo->prepare($sql);
         $result =  $query->execute($params);
@@ -41,7 +41,7 @@ class Db
     /*
      * @return bool
      * */
-    public function execute($sql, $params=[])
+    public function execute($sql, $params = [])
     {
         $query = $this->pdo->prepare($sql);
         return $query->execute($params);
@@ -50,7 +50,7 @@ class Db
     /*
      * @return array
      * */
-    public function fetchAll($sql, $params=[])
+    public function fetchAll($sql, $params = [])
     {
         $query = $this->pdo->prepare($sql);
         $query->execute($params);
@@ -60,15 +60,14 @@ class Db
     /*
      * @return array
      * */
-    public function fetchOne($sql, $params=[])
+    public function fetchOne($sql, $params = [])
     {
         $query = $this->pdo->prepare($sql);
         $query->execute($params);
         return $query->fetch();
-
     }
 
-    public function fetchColumn ($sql, $column, $params=[])
+    public function fetchColumn($sql, $column, $params = [])
     {
         $query = $this->pdo->prepare($sql);
         $query->execute($params);

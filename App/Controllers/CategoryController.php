@@ -8,14 +8,14 @@
 
 namespace App\Controllers;
 
-
 use App\Models\Categories;
 use App\Models\Storage;
 use Core\BaseController;
 
 class CategoryController extends BaseController
 {
-    public function viewAll() {
+    public function viewAll()
+    {
         $model = new Categories();
         $categories = $model->getAllCategoriesName();
         $this->setData($categories);

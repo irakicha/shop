@@ -8,7 +8,6 @@
 
 namespace Core;
 
-
 class RequestMethod
 {
     const HEAD = 'HEAD';
@@ -42,5 +41,4 @@ class RequestMethod
         }
         return false;
     }
-
 }

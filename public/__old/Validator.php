@@ -6,7 +6,8 @@
  * Time: 0:42
  */
 
-function __autoload($classname) {
+function __autoload($classname)
+{
     $filename = $classname .".php";
     include_once($filename);
 }

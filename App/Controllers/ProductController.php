@@ -24,5 +24,4 @@ class ProductController extends BaseController
         }
         $this->setData($product);
     }
-
 }
