@@ -41,4 +41,13 @@ class RequestMethod
         }
         return false;
     }
+
+
+    public function calc($a, $b)
+    {
+        if (is_int($a) && is_int($b)) {
+            return $a+ $b;
+        }
+        echo 'I cant\'t calculate strings';
+    }
 }

@@ -14,8 +14,11 @@
             "App\\": "App/",
             "Core\\": "Core/",
             "App\\Controllers\\": "App/Controllers/",
-            "App\\Models\\": "App/Models/"
+            "App\\Models\\": "App/Models/",
+            "Tests\\": "tests/"
         }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6"
     }
-
 }
