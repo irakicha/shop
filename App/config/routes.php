@@ -21,7 +21,7 @@ return [
 
     /*show all products*/
 
-    'category/viewAll' => 'category/viewAll',
+    'categories' => 'category/viewAll',
 
     'category/([a-z]+)' => 'category/view/$1',
 

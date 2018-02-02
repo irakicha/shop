@@ -14,7 +14,7 @@ include_once "head.php";
             <div class="col-7 menu">
                 <nav class="row ">
                     <a href="/" class="menu-item">Home</a>
-                    <a href="/category/viewAll" class="menu-item">Categories</a>
+                    <a href="/categories" class="menu-item">Categories</a>
                     <a href="#" class="menu-item">Contact us</a>
                 </nav>
             </div>

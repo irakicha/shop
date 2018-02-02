@@ -18,6 +18,12 @@ class Storage extends Model
 
     public $table = 'products';
 
+    public function getAllProducts()
+    {
+        echo $this->table;
+        return $this->findAll();
+    }
+
     public function getProductsByCategory($field)
     {
         return $this->findAllParams('category_id', $field);

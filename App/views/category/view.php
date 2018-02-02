@@ -7,7 +7,7 @@
  */
 ?>
 
-<div class="container product-container">
+<div class="product-container">
     <section class="row align-items-start product-filters">
         <div class="filter-name">Sort:</div>
         <div class="filter-item">
@@ -18,9 +18,17 @@
         </div>
     </section> <!--  product-filters -->
 
+    <div class="row choose-category">
+        <?php foreach ($categories as $category) : ?>
+            <div class="category-item <?php if ($categoryName == $category) : ?>selected<?php endif; ?>">
+                <a href="/category/<?php echo $category; ?>"><?php echo $category; ?></a>
+            </div>
+        <?php endforeach; ?>
+    </div> <!-- choose-product -->
+
     <section class="row justify-content-between product-gallery">
 
-        <?php foreach ($data as $product) : ?>
+        <?php foreach ($categoryProducts as $product) : ?>
             <div class="col-12 col-md-5 col-lg-3 product">
                 <div class="product-img">
                     <a href="product/<?php echo $product['id']; ?>" class="product-link">

@@ -16,17 +16,27 @@ class CategoryController extends BaseController
 {
     public function viewAll()
     {
-        $model = new Categories();
-        $categories = $model->getAllCategoriesName();
-        $this->setData($categories);
+        $modelCategory = new Categories();
+        $data['categories'] = $modelCategory->getAllCategoriesName();
+
+        $model = new Storage();
+
+        $data['categoryProducts']  = $model->findAll();
+        $this->setData($data);
     }
+
 
     public function view($name)
     {
+        $data['categoryName'] = $name;
+
         $modelCategory = new Categories();
-        $modelStorage =new Storage();
+        $data['categories'] = $modelCategory->getAllCategoriesName();
+
+        $modelStorage = new Storage();
+
         $catId = $modelCategory->getIdByName($name);
-        $catProducts = $modelStorage->getProductsByCategory($catId);
-        $this->setData($catProducts);
+        $data['categoryProducts'] = $modelStorage->getProductsByCategory($catId);
+        $this->setData($data);
     }
 }

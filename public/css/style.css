@@ -127,7 +127,7 @@ a:hover {
 
 .product-gallery {
     margin-bottom: 20px;
-    padding-left: 30px;
+    /*padding-left: 30px;*/
 }
 
 .product {
@@ -354,8 +354,9 @@ input.product__count-input {
     padding-bottom:45px;
 }
 
-.login-page h1{
-    margin-bottom: 45px;
+.login-page h1,
+.register-page h1{
+    margin-bottom: 30px;
 }
 
 .add-column-item {
@@ -379,6 +380,37 @@ input.product__count-input {
     text-transform: capitalize;
 
 }
+
+.choose-category{
+    margin-bottom: 30px;
+    padding-left: 0;
+    padding-bottom: 14px;
+}
+
+.category-item{
+    cursor: pointer;
+    color: black;
+    margin-right: 15px;
+    padding: 4px 17px;
+    border-radius: 100px;
+    background: #ecece6;
+    border: 1px solid #d1d1c6;
+    border-image: initial;
+    text-align: center;
+}
+
+.category-item:hover{
+    background: #e9efeb;
+}
+
+.category-item a:hover{
+    text-decoration: none;
+}
+
+.category-item.selected{
+    background: white;
+}
+
 
 
 /*Logout page*/

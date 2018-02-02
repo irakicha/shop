@@ -60,8 +60,11 @@ abstract class Model
     public function findOneFieldInColumn($column, $field, $value)
     {
         $sql = "SELECT * FROM {$this->table} WHERE $field = ?";
-        list($colName) = $this->pdo->fetchColumn($sql, $column, [$value]);
-        return $colName;
+        $result = $this->pdo->fetchColumn($sql, $column, [$value]);
+        if ($result) {
+            list($colName) = $result;
+            return $colName;
+        }
     }
 
     /*
