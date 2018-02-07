@@ -88,8 +88,8 @@ a:hover {
 }
 
 .service-links-icon {
-    width: 35px;
-    height: 35px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     color: #ffffff;
     background: #00a13a;
@@ -105,7 +105,12 @@ a:hover {
 
 .service-links i {
     font-size: 16px;
-    padding-top: 10px;
+    padding-top: 12px;
+}
+
+.cart-count{
+    display: inline-block;
+    font-size: 10px;
 }
 
 /*MAIN*/

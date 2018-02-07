@@ -1,5 +1,7 @@
 <?php
 include_once "head.php";
+
+use App\Models\Storage;
 ?>
 
 <body>
@@ -22,22 +24,23 @@ include_once "head.php";
                 <div class="row">
                     <div class="col service-links-container">
                         <div class="service-links-icon login">
-                            <i class="fa fa-user" aria-hidden="true" onclick="location.href='../auth/login'"></i>
+                            <i class="fa fa-user" aria-hidden="true" onclick="location.href='/auth/login'"></i>
                         </div>
                     </div>
                     <div class="col service-links-container">
                         <div class="service-links-icon login">
-                            <i class="fa fa-user-plus" aria-hidden="true" onclick="location.href='../auth/register'"></i>
+                            <i class="fa fa-user-plus" aria-hidden="true" onclick="location.href='/auth/register'"></i>
                         </div>
                     </div>
                     <div class="col service-links-container">
                         <div class="service-links-icon logout">
-                            <i class="fa fa-user-times" aria-hidden="true" onclick="location.href='../auth/logout'"></i>
+                            <i class="fa fa-user-times" aria-hidden="true" onclick="location.href='/auth/logout'"></i>
                         </div>
                     </div>
                     <div class="col service-links-container">
                         <div class="service-links-icon">
-                            <i class="fa fa-shopping-cart" aria-hidden="true" onclick="location.href='../cart'"></i>
+                            <i class="fa fa-shopping-cart" aria-hidden="true" onclick="location.href='/cart'"></i>
+                            <span id="cart-count" class="cart-count"><?php echo Storage::productsInCart()?></span>
                         </div>
                     </div>
                 </div>

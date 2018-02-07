@@ -13,8 +13,7 @@
                 <div><?php echo $price;?><span class="product-price_currency">USD</span></div>
             </div>
             <div class="col btn-container">
-                <a href="/cart/add/<?php echo $id ?>" class="btn add-to-cart">Add To
-                    Cart</a>
+                <a href="/cart/add/<?php echo $id ?>" data-id="<?php echo $product['id'] ?>" class="btn add-to-cart">Add To Cart</a>
             </div>
         </div>
     </div>

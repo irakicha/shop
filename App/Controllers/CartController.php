@@ -16,7 +16,7 @@ class CartController extends BaseController
 {
     public function view()
     {
-        var_dump($_SESSION);
+        echo __CLASS__;
     }
 
     public function add($id)
@@ -24,8 +24,19 @@ class CartController extends BaseController
         if (!self::isAuth()) {
             Router::redirect('/auth/login');
         }
-        $model = new Storage();
-        $addedProduct = $model->addProduct($id);
-//            Router::redirect($_SERVER['HTTP_REFERER']);
+        $modelStorage = new Storage();
+        $modelStorage->addProduct($id);
+        Router::redirect($_SERVER['HTTP_REFERER']);
+    }
+
+    public function addAjax($id)
+    {
+//        if (!self::isAuth()) {
+//            Router::redirect('/auth/login');
+//        }
+        $modelStorage = new Storage();
+        $result = $modelStorage->addProduct($id);
+        echo $result;
+        return true;
     }
 }

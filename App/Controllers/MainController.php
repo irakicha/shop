@@ -12,10 +12,8 @@ class MainController extends BaseController
 {
     public function index()
     {
-        $model = new Storage();
-
-        $products = $model->findAll();
-        print_r($_SESSION);
+        $modelStorage = new Storage();
+        $products = $modelStorage->findAll();
         $this->setData($products);
     }
 }

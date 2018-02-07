@@ -32,6 +32,8 @@ return [
 
     'cart/add/([0-9]+)' => 'cart/add/$1',
 
+    'cart/addAjax/([0-9]+)' => 'cart/addAjax/$1',
+
 
     /*AuthController*/
 

@@ -15,7 +15,6 @@ class ProductController extends BaseController
 {
     public function view($id)
     {
-
         $products = new Storage();
         $product = $products->findOne('id', $id);
         if (!$product) {

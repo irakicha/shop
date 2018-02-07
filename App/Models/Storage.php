@@ -42,13 +42,10 @@ class Storage extends Model
             exit();
         }
 
-        var_dump($this->findOneFieldInColumn(8, 'id', $id));
-
         if ($this->findOneFieldInColumn(8, 'id', $id) == 0) {
             echo "out of stock";
             exit();
         }
-
 
         $productInCart =[];
 
@@ -65,6 +62,15 @@ class Storage extends Model
 
         $_SESSION['cart'] = $productInCart;
 
-        var_dump($_SESSION);
+        return self::productsInCart();
+    }
+
+    public static function productsInCart()
+    {
+        if (Session::keyExist('cart')) {
+            $count = array_sum($_SESSION['cart']);
+            return $count;
+        }
+        return 0;
     }
 }

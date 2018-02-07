@@ -35,26 +35,22 @@ class View
 
     public function render($data)
     {
-
         if (is_array($data)) {
             extract($data);
         }
-
-        $fileView = VIEW_PATH.$this->controllerName.DIRECTORY_SEPARATOR.$this->view.'.php';
-        ob_start();
-        if (!is_file($fileView)) {
-            echo "View not found".$fileView;
-        }
-        require_once $fileView;
-
-        $content = ob_get_clean();
-
-
         $fileLayout = VIEW_PATH."layouts".DIRECTORY_SEPARATOR.$this->layout.'.php';
 
-        if (!is_file($fileLayout)) {
-            echo "layout not found".$fileLayout;
+        $fileView = VIEW_PATH.$this->controllerName.DIRECTORY_SEPARATOR.$this->view.'.php';
+
+        ob_start();
+
+        if (is_file($fileView)) {
+            include_once $fileView;
         }
-        require_once $fileLayout;
+        $content = ob_get_clean();
+
+        if ($content && is_file($fileLayout)) {
+            require_once $fileLayout;
+        }
     }
 }
