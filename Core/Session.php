@@ -76,7 +76,7 @@ class Session
 
     public static function getKey($key)
     {
-        if (array_key_exists($key, $_SESSION)) {
+        if (self::keyExist($key)) {
             return $_SESSION[$key];
         }
         return false;

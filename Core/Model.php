@@ -22,9 +22,9 @@ abstract class Model
     /*
      * Select all records according Sql query
      * */
-    public function findSql($sql, $params = [])
+    public function findSql($sql, $params)
     {
-        return $this->pdo->execute($sql, $params);
+        return $this->pdo->fetchAll($sql, $params);
     }
 
     /*

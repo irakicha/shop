@@ -28,11 +28,13 @@ return [
 
     /*CartController*/
 
-    'cart' => 'cart/view',
+    'cart' => 'cart/index',
 
     'cart/add/([0-9]+)' => 'cart/add/$1',
 
     'cart/addAjax/([0-9]+)' => 'cart/addAjax/$1',
+
+    'cart/removeAjax/([0-9]+)' => 'cart/removeAjax/$1',
 
 
     /*AuthController*/

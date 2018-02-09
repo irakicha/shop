@@ -11,12 +11,21 @@ namespace App\Controllers;
 use App\Models\Storage;
 use Core\BaseController;
 use Core\Router;
+use Core\Session;
 
 class CartController extends BaseController
 {
-    public function view()
+    public function index()
     {
-        echo __CLASS__;
+        $productsInCart = Storage::productsInCart();
+
+        if ($productsInCart) {
+            $productsId = array_keys($productsInCart);
+            $productsModel = new Storage();
+            $products = $productsModel->getProductsById($productsId);
+            $data['productsInCart'] = $products;
+            $this->setData($data);
+        }
     }
 
     public function add($id)
@@ -31,12 +40,19 @@ class CartController extends BaseController
 
     public function addAjax($id)
     {
-//        if (!self::isAuth()) {
-//            Router::redirect('/auth/login');
-//        }
+        if (!self::isAuth()) {
+            die();
+        }
         $modelStorage = new Storage();
         $result = $modelStorage->addProduct($id);
         echo $result;
         return true;
     }
+
+    public function removeAjax($id)
+    {
+        unset($_SESSION['cart'][$id]);
+        return true;
+    }
+
 }

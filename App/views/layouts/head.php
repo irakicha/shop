@@ -1,3 +1,4 @@
+<?php //var_dump(\Core\Session::getKey('cart'));?>
 <!DOCTYPE html>
 <html lang="en">
 

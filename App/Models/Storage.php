@@ -62,15 +62,51 @@ class Storage extends Model
 
         $_SESSION['cart'] = $productInCart;
 
-        return self::productsInCart();
+        return self::productsInCartQty();
     }
 
     public static function productsInCart()
     {
+        return Session::getKey('cart');
+    }
+
+    public static function productsInCartQty($id = '')
+    {
         if (Session::keyExist('cart')) {
-            $count = array_sum($_SESSION['cart']);
+            $count = !$id ? array_sum($_SESSION['cart']) : $_SESSION['cart'][$id];
             return $count;
         }
         return 0;
+    }
+
+    public function getProductsById($idArray)
+    {
+        $in  = str_repeat('?,', count($idArray) - 1) . '?';
+
+        $productsInCart = $this->findSql("SELECT id, image, title, price FROM {$this->table} WHERE id IN ($in)", $idArray);
+
+        return $productsInCart;
+    }
+
+    public static function getProductSubtotal($id, $price)
+    {
+        $productQty = self::productsInCartQty($id);
+
+        $total=$productQty * $price;
+
+        return $total;
+    }
+
+    public static function getTotalPrice($products)
+    {
+        $productsInCart = self::productsInCart();
+
+        $total = 0;
+
+        foreach ($products as $product) {
+            $total+=$product['price'] * $productsInCart[$product['id']];
+        }
+
+        return $total;
     }
 }

@@ -40,7 +40,7 @@ use App\Models\Storage;
                     <div class="col service-links-container">
                         <div class="service-links-icon">
                             <i class="fa fa-shopping-cart" aria-hidden="true" onclick="location.href='/cart'"></i>
-                            <span id="cart-count" class="cart-count"><?php echo Storage::productsInCart()?></span>
+                            <span id="cart-count" class="cart-count"><?php echo Storage::productsInCartQty()?></span>
                         </div>
                     </div>
                 </div>
