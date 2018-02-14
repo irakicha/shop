@@ -9,6 +9,7 @@
 namespace App\Models;
 
 use Core\Model;
+use Core\Router;
 
 class Users extends Model
 {
@@ -34,9 +35,18 @@ class Users extends Model
         $user = parent::findOne('login', $login);
 
         if ($user && $user['password'] == $password) {
+            session_start();
             return true;
         }
         return false;
+    }
+
+    public function registerUser($email, $login, $password, $phone, $city, $address, $zipCode)
+    {
+        $userRole = 2;
+        $userFields = [$userRole, $email, $login, $password, $phone, $city, $address, $zipCode];
+        $this->query("INSERT INTO users (user_role_id, email, login, password, phone, city, address, zip_code) VALUES(?, ?, ?, ?, ?, ?, ?, ?)", $userFields);
+        session_start();
     }
 
     public function getUserInfo($login)
@@ -44,17 +54,6 @@ class Users extends Model
         $user = $this->findOne('login', $login);
         return $user;
     }
-
-
-    public static function setUser($name, $login)
-    {
-        if ($name && $login) {
-//            $this->findSql()
-//            return self::$users;
-        }
-        return false;
-    }
-
 
     public static function checkName($login)
     {
@@ -70,5 +69,11 @@ class Users extends Model
             return true;
         }
         return false;
+    }
+
+
+    protected function checkHash($password, $hash)
+    {
+        return password_verify(trim($password), trim($hash));
     }
 }

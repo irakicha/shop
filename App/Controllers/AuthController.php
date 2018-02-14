@@ -49,9 +49,15 @@ class AuthController extends BaseController
 
     public function register()
     {
+
         if (RequestMethod::isPost()) {
+            $email = $this->clearString($_POST['email']);
             $login = $this->clearString($_POST['login']);
-            $password = $this->clearString($_POST['password']);
+            $password = $this->clearInt($_POST['password']);
+            $phone = $this->clearInt($_POST['phone']);
+            $city = $this->clearString($_POST['city']);
+            $address = $this->clearString($_POST['address']);
+            $zipCode = $this->clearString($_POST['zip-code']);
 
             if (!Users::checkName($login)) {
                 $errors[]= "login is too short";
@@ -67,8 +73,12 @@ class AuthController extends BaseController
                 $errors[]= "this login already exist";
             }
 
-            //регистрируем нового пользователя и редиректим в личный каибинет
+            $newUser->registerUser($email, $login, $password, $phone, $city, $address, $zipCode);
 
+            $newUser->authUser($email, $login);
+
+            Session::setKey('login', $login);
+            Router::redirect('/account/'.$login);
 
             if (!empty($errors)) {
                 $this->setData($errors);
@@ -76,22 +86,25 @@ class AuthController extends BaseController
         }
     }
 
+    public function logout()
+    {
+        Session::sessionDestroy();
+        Router::redirect('/');
+    }
+
     public function clearString($string)
     {
         return strval(trim(strip_tags($string)));
     }
 
+    public function clearInt($data)
+    {
+        return abs((int)$data);
+    }
+
     protected function getHash($password)
     {
-        $hash = password_hash($password, PASSWORD_BCRYPT);
+        $hash = password_hash($this->clearString($password), PASSWORD_BCRYPT);
         return $hash;
     }
-
-    public function logout()
-    {
-        $login = Session::getKey('login');
-        $this->setData($login);
-        Session::sessionDestroy();
-    }
-
 }

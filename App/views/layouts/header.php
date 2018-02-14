@@ -2,6 +2,7 @@
 include_once "head.php";
 
 use App\Models\Storage;
+use Core\Session;
 ?>
 
 <body>
@@ -27,16 +28,19 @@ use App\Models\Storage;
                             <i class="fa fa-user" aria-hidden="true" onclick="location.href='/auth/login'"></i>
                         </div>
                     </div>
-                    <div class="col service-links-container">
-                        <div class="service-links-icon login">
+                    <?php if (!Session::sessionExist()) : ?>
+                        <div class="col service-links-container">
+                        <div class="service-links-icon register">
                             <i class="fa fa-user-plus" aria-hidden="true" onclick="location.href='/auth/register'"></i>
                         </div>
                     </div>
+                    <?php else : ?>
                     <div class="col service-links-container">
                         <div class="service-links-icon logout">
                             <i class="fa fa-user-times" aria-hidden="true" onclick="location.href='/auth/logout'"></i>
                         </div>
                     </div>
+                    <?php endif; ?>
                     <div class="col service-links-container">
                         <div class="service-links-icon">
                             <i class="fa fa-shopping-cart" aria-hidden="true" onclick="location.href='/cart'"></i>

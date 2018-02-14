@@ -14,9 +14,9 @@ abstract class Model
         $this ->pdo = Db::instance();
     }
 
-    public function query($sql)
+    public function query($sql, $params = [])
     {
-        return $this->pdo->query($sql);
+        return $this->pdo->query($sql, $params);
     }
 
     /*

@@ -14,7 +14,7 @@
             <p>Your personal information:</p>
             <p>email: <?php echo $email; ?></p>
             <p>phone: <?php echo $phone; ?></p>
-            <p>address: <?php echo "$zip_code, $sity, $address"; ?></p>
+            <p>address: <?php echo "$zip_code, $city, $address"; ?></p>
         </div>
     </div>
 </div>

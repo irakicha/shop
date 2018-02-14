@@ -41,15 +41,14 @@ class Session
 
     public static function sessionExist()
     {
-        if (!self::getSessionId()) {
-            return false;
+        if (session_status() === PHP_SESSION_ACTIVE) {
+            return true;
         }
-        return true;
     }
 
     public static function sessionStart()
     {
-        if (!isset($_SESSION)) {
+        if (self::cookieExist()) {
             session_start();
             return true;
         }
@@ -58,18 +57,22 @@ class Session
 
     public static function sessionDestroy()
     {
-        if (self::sessionExist() == true) {
-            session_destroy();
-            unset($_SESSION[self::getName()]);
-            return true;
+
+        if (!self::cookieExist() || !self::sessionExist()) {
+            return;
         }
-        return false;
+
+        session_destroy();
+        unset($_SESSION[self::getName()]);
+        setcookie(self::getName(), "", time()-3600, "/");
     }
 
     public static function keyExist($key)
     {
-        if (array_key_exists($key, $_SESSION)) {
-            return true;
+        if (isset($_SESSION)) {
+            if (array_key_exists($key, $_SESSION)) {
+                return true;
+            }
         }
         return false;
     }
