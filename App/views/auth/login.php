@@ -10,8 +10,8 @@
 
         <div class="container">
             <div class="row">
-                <?php if (!empty($data)) : ?>
-                        <?php foreach ($data as $error) : ?>
+                <?php if (!empty($errors)) : ?>
+                        <?php foreach ($errors as $error) : ?>
                             <div class="alert alert-info" role="alert">
                                 <?php echo $error;?>
                             </div>

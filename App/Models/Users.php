@@ -33,8 +33,7 @@ class Users extends Model
     public function authUser($login, $password)
     {
         $user = parent::findOne('login', $login);
-
-        if ($user && $user['password'] == $password) {
+        if ($user && self::checkHash($password, $user['password'])) {
             session_start();
             return true;
         }
@@ -72,7 +71,7 @@ class Users extends Model
     }
 
 
-    protected function checkHash($password, $hash)
+    protected static function checkHash($password, $hash)
     {
         return password_verify(trim($password), trim($hash));
     }

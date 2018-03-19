@@ -32,16 +32,16 @@ class AuthController extends BaseController
 
             $user = new Users();
 
-            if (!$user->authUser($login, $password)) {
-                $errors[]= "you should register first";
+            if ($user->authUser($login, $password)) {
+                Session::setKey('login', $login);
+                Router::redirect('/account/'.$login);
             }
 
-            Session::setKey('login', $login);
-            Router::redirect('/account/'.$login);
+            $data['errors'][]= "you should register first";
 
 
-            if (!empty($errors)) {
-                $this->setData($errors);
+            if (!empty($data)) {
+                $this->setData($data);
             }
 
         }
@@ -53,7 +53,7 @@ class AuthController extends BaseController
         if (RequestMethod::isPost()) {
             $email = $this->clearString($_POST['email']);
             $login = $this->clearString($_POST['login']);
-            $password = $this->clearInt($_POST['password']);
+            $password = $this->getHash($_POST['password']);
             $phone = $this->clearInt($_POST['phone']);
             $city = $this->clearString($_POST['city']);
             $address = $this->clearString($_POST['address']);

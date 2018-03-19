@@ -15,13 +15,24 @@ use Core\Session;
 
 class Storage extends Model
 {
-
     public $table = 'products';
 
-    public function getAllProducts()
+    public $productsPerPage = 3;
+
+    public function getAllProducts($page)
     {
-        echo $this->table;
-        return $this->findAll();
+
+        $offset = ($page - 1) * $this->productsPerPage;
+
+        return $this->findSql("SELECT id, image, title, price, description FROM {$this->table} ORDER BY 'id' ASC LIMIT {$this->productsPerPage} OFFSET {$offset}");
+    }
+
+    public function getCategoryProductCount($category_id = '')
+    {
+        if ($category_id != false) {
+            return $this->findSql("SELECT count(id) as count FROM {$this->table} WHERE category_id = {$category_id}");
+        }
+        return $this->findSql("SELECT count(id) as count FROM {$this->table}");
     }
 
     public function getProductsByCategory($field)

@@ -21,6 +21,8 @@ return [
 
     /*show all products*/
 
+    'categories/page-([0-9]+)' => 'category/viewAll/$1',
+
     'categories' => 'category/viewAll',
 
     'category/([a-z]+)' => 'category/view/$1',
@@ -48,7 +50,7 @@ return [
 
     /*UserController*/
 
-    'account/([a-z]+)' =>'account/view/$1',
+    'account/([a-z0-9]+)' =>'account/view/$1',
 
 
     /*MainBaseController*/

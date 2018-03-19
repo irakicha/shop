@@ -11,17 +11,28 @@ namespace App\Controllers;
 use App\Models\Categories;
 use App\Models\Storage;
 use Core\BaseController;
+use Core\Pagination;
 
 class CategoryController extends BaseController
 {
-    public function viewAll()
+    public function viewAll($page = '')
     {
+        $page = !empty($page) ? intval($page) : 1;
+
         $modelCategory = new Categories();
+
         $data['categories'] = $modelCategory->getAllCategoriesName();
 
         $model = new Storage();
 
-        $data['categoryProducts']  = $model->findAll();
+        $count = $model->getCategoryProductCount();
+
+        $pagination = new Pagination($count[0]['count'], $page, $model->productsPerPage, 'page-');
+
+        $data['categoryProducts']  = $model->getAllProducts($page);
+
+        $data['pagination'] = $pagination;
+
         $this->setData($data);
     }
 
@@ -36,6 +47,7 @@ class CategoryController extends BaseController
         $modelStorage = new Storage();
 
         $catId = $modelCategory->getIdByName($name);
+
         $data['categoryProducts'] = $modelStorage->getProductsByCategory($catId);
         $this->setData($data);
     }

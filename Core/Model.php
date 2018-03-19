@@ -19,10 +19,15 @@ abstract class Model
         return $this->pdo->query($sql, $params);
     }
 
+    public function execute($sql, $params = [])
+    {
+        return $this->pdo->execute($sql, $params);
+    }
+
     /*
      * Select all records according Sql query
      * */
-    public function findSql($sql, $params)
+    public function findSql($sql, $params = [])
     {
         return $this->pdo->fetchAll($sql, $params);
     }
