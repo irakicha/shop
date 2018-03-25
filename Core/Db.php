@@ -39,15 +39,6 @@ class Db
     }
 
     /*
-     * @return bool
-     * */
-    public function execute($sql, $params = [])
-    {
-        $query = $this->pdo->prepare($sql);
-        return $query->execute($params);
-    }
-
-    /*
      * @return array
      * */
     public function fetchAll($sql, $params = [])
@@ -67,10 +58,21 @@ class Db
         return $query->fetch();
     }
 
+    /*
+     * @return array
+     * */
     public function fetchColumn($sql, $column, $params = [])
     {
         $query = $this->pdo->prepare($sql);
         $query->execute($params);
         return $query->fetchAll(\PDO::FETCH_COLUMN, $column);
+    }
+
+    /*
+    * @return string
+    * */
+    public function getLastInsertId()
+    {
+        return $this->pdo->lastInsertId();
     }
 }

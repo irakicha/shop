@@ -23,20 +23,26 @@ return [
 
     'categories/page-([0-9]+)' => 'category/viewAll/$1',
 
-    'categories' => 'category/viewAll',
-
     'category/([a-z]+)' => 'category/view/$1',
+
+    'categories' => 'category/viewAll',
 
 
     /*CartController*/
-
-    'cart' => 'cart/index',
 
     'cart/add/([0-9]+)' => 'cart/add/$1',
 
     'cart/addAjax/([0-9]+)' => 'cart/addAjax/$1',
 
     'cart/removeAjax/([0-9]+)' => 'cart/removeAjax/$1',
+
+    'cart' => 'cart/index',
+
+    /*Order controller*/
+
+    'order/create' => 'order/create',
+
+    'order/view/([0-9]+)' => 'order/view/$1',
 
 
     /*AuthController*/
@@ -50,7 +56,7 @@ return [
 
     /*UserController*/
 
-    'account/([a-z0-9]+)' =>'account/view/$1',
+    'account/view/([a-z0-9]+)' =>'account/view/$1',
 
 
     /*MainBaseController*/

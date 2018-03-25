@@ -23,7 +23,7 @@ class AuthController extends BaseController
     public function login()
     {
         if (Session::keyExist('login')) {
-            Router::redirect('/account/'.Session::getKey('login'));
+            Router::redirect('/account/view/'.Session::getKey('login'));
         }
 
         if (RequestMethod::isPost()) {
@@ -69,7 +69,7 @@ class AuthController extends BaseController
 
             $newUser = new Users();
 
-            if ($newUser->getUserLogin($login)) {
+            if ($newUser->findUserLogin($login)) {
                 $errors[]= "this login already exist";
             }
 

@@ -22,14 +22,6 @@ class Users extends Model
         return $this->findAll();
     }
 
-    public function getUserLogin($login)
-    {
-        if ($login) {
-            return $this->findOneFieldInColumn(3, 'login', $login);
-        }
-        return false;
-    }
-
     public function authUser($login, $password)
     {
         $user = parent::findOne('login', $login);
@@ -52,6 +44,20 @@ class Users extends Model
     {
         $user = $this->findOne('login', $login);
         return $user;
+    }
+
+    public function findUserLogin($login)
+    {
+        if ($this->findOneFieldInColumn(3, 'login', $login)) {
+            return true;
+        }
+        return false;
+    }
+
+    public function getUserId($login)
+    {
+        $userId = $this->findOneFieldInColumn(0, 'login', $login);
+        return $userId;
     }
 
     public static function checkName($login)

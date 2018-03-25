@@ -69,7 +69,7 @@ use Core\Session;
 <div class="row btn-row">
     <div class="col btn-container">
         <a href="/" class="btn continue-shopping">Continue Shopping</a>
-        <button class="btn buy">Buy</button>
+        <a href="/order/create" class="btn buy">Buy</a>
     </div>
 </div>
 <?php elseif (!Session::sessionExist()) : ?>

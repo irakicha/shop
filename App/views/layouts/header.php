@@ -25,7 +25,7 @@ use Core\Session;
                 <div class="row">
                     <div class="col service-links-container">
                         <div class="service-links-icon login">
-                            <i class="fa fa-user" aria-hidden="true" onclick="location.href='/auth/login'"></i>
+                            <i class="fa fa-user" aria-hidden="true" onclick="location.href='/auth/login/'"></i>
                         </div>
                     </div>
                     <?php if (!Session::sessionExist()) : ?>

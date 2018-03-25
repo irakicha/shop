@@ -21,8 +21,7 @@ class Storage extends Model
 
     public function getAllProducts($page)
     {
-
-        $offset = ($page - 1) * $this->productsPerPage;
+        $offset = abs((1-$page)) * $this->productsPerPage;
 
         return $this->findSql("SELECT id, image, title, price, description FROM {$this->table} ORDER BY 'id' ASC LIMIT {$this->productsPerPage} OFFSET {$offset}");
     }
@@ -106,6 +105,11 @@ class Storage extends Model
         $total=$productQty * $price;
 
         return $total;
+    }
+
+    public function getProductPrice($id)
+    {
+        return $this->findOneFieldInColumn(7, 'id', $id);
     }
 
     public static function getTotalPrice($products)

@@ -52,7 +52,7 @@ class Router
             if (preg_match('#^'.$pattern.'$#', $this->uri)) {
                 $internalPath = preg_replace('#^'.$pattern.'$#', $value, $this->uri);
                 $route = explode('/', $internalPath);
-                $route = array_pad($route, 3, '');
+                $route = array_pad($route, 3, ' ');
                 $keys = ['controller','action','params'];
                 $route = array_combine($keys, $route);
                 return $route;

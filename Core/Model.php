@@ -19,11 +19,6 @@ abstract class Model
         return $this->pdo->query($sql, $params);
     }
 
-    public function execute($sql, $params = [])
-    {
-        return $this->pdo->execute($sql, $params);
-    }
-
     /*
      * Select all records according Sql query
      * */
@@ -84,6 +79,15 @@ abstract class Model
         }
         $sql = "SELECT * FROM {$this->table}";
         return $this->pdo->fetchColumn($sql, $column);
+    }
+
+    /*
+    * Return last insert id
+    * */
+
+    public function getLastInsertId()
+    {
+        return $this->pdo->getLastInsertId();
     }
 
 
