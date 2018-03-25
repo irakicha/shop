@@ -85,6 +85,7 @@ class Order extends Model
             $productPrice = $storage->getProductPrice($id);
             $params = [$id, $qty, $productPrice, $orderId];
             $this->query("INSERT INTO {$this->productToOrderTable} (product_id, qty, product_price,  order_id) VALUES (?, ?, ?, ?)", $params);
+            $storage->removePurchasedProduct($id, $qty);
         }
     }
 

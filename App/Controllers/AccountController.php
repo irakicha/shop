@@ -12,14 +12,14 @@ use Core\Router;
 
 class AccountController extends BaseController
 {
-    public function view($id)
+    public function view($login)
     {
         if (!self::isAuth()) {
             Router::redirect('/');
         }
 
         $model = new Users();
-        $user = $model->getUserInfo($id);
+        $user = $model->getUserInfo($login);
         $this->setData($user);
     }
 }

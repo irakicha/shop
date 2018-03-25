@@ -34,19 +34,21 @@ class OrderController extends BaseController
             Router::redirect('/auth/login');
         }
 
-        $user = new Users();
-
-        $userId = $user->getUserId(Session::getKey('login'));
-
         $productsInCart = Storage::productsInCart();
 
         if (empty($productsInCart)) {
             Router::redirect('/');
         }
 
+        $user = new Users();
+
+        $userId = $user->getUserId(Session::getKey('login'));
+
         $orderModel = new Order();
 
         $orderModel->addNewOrder($userId, $productsInCart);
+
+        unset($_SESSION['cart']);
 
         Router::redirect('/order/view/'.$orderModel->order_id);
     }

@@ -10,6 +10,7 @@ namespace App\Controllers;
 
 use App\Models\Storage;
 use Core\BaseController;
+use Core\RequestMethod;
 use Core\Router;
 use Core\Session;
 

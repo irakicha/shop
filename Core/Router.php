@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: ira
- * Date: 25.12.17
- * Time: 13:37
- */
 
 namespace Core;
 
@@ -73,29 +67,25 @@ class Router
         $route =$this->match();
 
         if (!$route) {
-            echo "page not found";
-            header("HTTP/1.1 404 Not Found");
+            throw new \Exception("Page not found");
         }
 
         $controller =ucfirst($route['controller']).'Controller';
 
         $controllerPath = 'App\Controllers\\'.$controller;
 
-        if (!class_exists($controllerPath)) {
-            //throw new Exception("No Controller");
-            echo "controller not found";
-        }
-
-        $controller = new $controllerPath($route);
-
         $action = $route['action'];
 
-        if (!method_exists($controllerPath, $action)) {
-            //throw new Exception("No method");
-            echo "Method not found";
+        $params = $route['params'];
+
+        if (!class_exists($controllerPath)) {
+            throw new \Exception("Controller not found");
         }
 
-        $params = $route['params'];
+        if (!method_exists($controllerPath, $action)) {
+            throw new \Exception("Method not found");
+        }
+        $controller = new $controllerPath($route);
 
         if (!$params) {
             $controller ->$action();

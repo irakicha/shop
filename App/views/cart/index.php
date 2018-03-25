@@ -4,8 +4,10 @@ use App\Models\Storage;
 use Core\Session;
 
 ?>
-<h1 class="page-title">Basket</h1>
+
 <?php if (isset($productsInCart)) : ?>
+<h1 class="page-title">Basket</h1>
+
 <table class="table table-hover basket-table">
     <thead class="thead-dark">
     <tr>

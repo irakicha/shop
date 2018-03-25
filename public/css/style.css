@@ -98,9 +98,18 @@ a:hover {
     margin: 0 0 0 auto;
 }
 
+
 .service-links-icon:hover {
+color: #00a13a;
+background: #ffffff;
+}
+
+.service-links-icon a{
+    color: #ffffff;
+}
+
+.service-links-icon a:hover{
     color: #00a13a;
-    background: #ffffff;
 }
 
 .service-links i {

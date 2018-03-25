@@ -42,36 +42,27 @@ class Storage extends Model
 
     public function addProduct($id)
     {
-
         if (!BaseController::isAuth()) {
             Router::redirect('/auth/login');
         }
-
         if (!$this->findOne('id', $id)) {
             echo "no products with this id";
             exit();
         }
-
         if ($this->findOneFieldInColumn(8, 'id', $id) == 0) {
             echo "out of stock";
             exit();
         }
-
         $productInCart =[];
-
         if (Session::keyExist('cart')) {
             $productInCart = $_SESSION['cart'];
         }
-
-
         if (array_key_exists($id, $productInCart)) {
             $productInCart[$id] ++;
         } else {
             $productInCart[$id] = 1;
         }
-
         $_SESSION['cart'] = $productInCart;
-
         return self::productsInCartQty();
     }
 
@@ -123,5 +114,10 @@ class Storage extends Model
         }
 
         return $total;
+    }
+
+    public function removePurchasedProduct($productId, $qty)
+    {
+        return $this->query("UPDATE {$this->table} SET quantity = quantity-$qty WHERE id = $productId");
     }
 }

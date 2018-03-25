@@ -25,26 +25,34 @@ use Core\Session;
                 <div class="row">
                     <div class="col service-links-container">
                         <div class="service-links-icon login">
-                            <i class="fa fa-user" aria-hidden="true" onclick="location.href='/auth/login/'"></i>
+                            <a href="/auth/login/">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                            </a>
                         </div>
                     </div>
                     <?php if (!Session::sessionExist()) : ?>
                         <div class="col service-links-container">
                         <div class="service-links-icon register">
-                            <i class="fa fa-user-plus" aria-hidden="true" onclick="location.href='/auth/register'"></i>
+                            <a href="/auth/register/">
+                                <i class="fa fa-user-plus" aria-hidden="true"></i>
+                            </a>
                         </div>
                     </div>
                     <?php else : ?>
                     <div class="col service-links-container">
                         <div class="service-links-icon logout">
-                            <i class="fa fa-user-times" aria-hidden="true" onclick="location.href='/auth/logout'"></i>
+                            <a href="/auth/logout/">
+                                <i class="fa fa-user-times" aria-hidden="true"></i>
+                            </a>
                         </div>
                     </div>
                     <?php endif; ?>
                     <div class="col service-links-container">
                         <div class="service-links-icon">
-                            <i class="fa fa-shopping-cart" aria-hidden="true" onclick="location.href='/cart'"></i>
-                            <span id="cart-count" class="cart-count"><?php echo Storage::productsInCartQty()?></span>
+                            <a href="/cart/">
+                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                <span id="cart-count" class="cart-count"><?php echo Storage::productsInCartQty()?></span>
+                            </a>
                         </div>
                     </div>
                 </div>

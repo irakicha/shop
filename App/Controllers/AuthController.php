@@ -34,7 +34,7 @@ class AuthController extends BaseController
 
             if ($user->authUser($login, $password)) {
                 Session::setKey('login', $login);
-                Router::redirect('/account/'.$login);
+                Router::redirect('/account/view/'.$login);
             }
 
             $data['errors'][]= "you should register first";
@@ -78,7 +78,7 @@ class AuthController extends BaseController
             $newUser->authUser($email, $login);
 
             Session::setKey('login', $login);
-            Router::redirect('/account/'.$login);
+            Router::redirect('/account/view/'.$login);
 
             if (!empty($errors)) {
                 $this->setData($errors);
